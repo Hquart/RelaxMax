@@ -8,17 +8,55 @@
 
 /* Begin PBXBuildFile section */
 		9A6FFF112837886D002B0844 /* RelaxMaxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF102837886D002B0844 /* RelaxMaxApp.swift */; };
-		9A6FFF132837886D002B0844 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF122837886D002B0844 /* ContentView.swift */; };
 		9A6FFF152837886D002B0844 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A6FFF142837886D002B0844 /* Assets.xcassets */; };
 		9A6FFF182837886D002B0844 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A6FFF172837886D002B0844 /* Preview Assets.xcassets */; };
+		9A6FFF1F2837888D002B0844 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF1E2837888D002B0844 /* HomeView.swift */; };
+		9A6FFF21283788E0002B0844 /* SmartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF20283788E0002B0844 /* SmartView.swift */; };
+		9A6FFF2328378915002B0844 /* FocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF2228378915002B0844 /* FocusView.swift */; };
+		9A6FFF25283789C5002B0844 /* RelaxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF24283789C5002B0844 /* RelaxView.swift */; };
+		9A6FFF27283789EE002B0844 /* BreathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF26283789EE002B0844 /* BreathView.swift */; };
+		9A6FFF2928378A55002B0844 /* GradientAnim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF2828378A55002B0844 /* GradientAnim.swift */; };
+		9A6FFF2B28378A76002B0844 /* FocusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF2A28378A76002B0844 /* FocusViewModel.swift */; };
+		9A6FFF2D28378AB5002B0844 /* AudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF2C28378AB5002B0844 /* AudioService.swift */; };
+		9A6FFF2F28378B45002B0844 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF2E28378B45002B0844 /* ClockView.swift */; };
+		9A6FFF3128378B82002B0844 /* CirclesAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF3028378B82002B0844 /* CirclesAnimationView.swift */; };
+		9A6FFF3328378BBB002B0844 /* PlayerAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF3228378BBB002B0844 /* PlayerAudioView.swift */; };
+		9A6FFF3528378C10002B0844 /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF3428378C10002B0844 /* TimerService.swift */; };
+		9A6FFF3728378C3B002B0844 /* CircleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF3628378C3B002B0844 /* CircleModel.swift */; };
+		9A6FFF3928378CF4002B0844 /* Quotes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6FFF3828378CF4002B0844 /* Quotes.xib */; };
+		9A6FFF3D28378D3E002B0844 /* sound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9A6FFF3A28378D3E002B0844 /* sound1.mp3 */; };
+		9A6FFF3E28378D3E002B0844 /* sound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9A6FFF3B28378D3E002B0844 /* sound2.mp3 */; };
+		9A6FFF3F28378D3E002B0844 /* relax1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9A6FFF3C28378D3E002B0844 /* relax1.mp3 */; };
+		9A6FFF4328379DF0002B0844 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF4228379DF0002B0844 /* Extension.swift */; };
+		9A6FFF4928379F74002B0844 /* RelaxView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF4828379F74002B0844 /* RelaxView2.swift */; };
+		9A6FFF4B2837A58E002B0844 /* HomeFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF4A2837A58E002B0844 /* HomeFrameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9A6FFF0D2837886D002B0844 /* RelaxMax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RelaxMax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6FFF102837886D002B0844 /* RelaxMaxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelaxMaxApp.swift; sourceTree = "<group>"; };
-		9A6FFF122837886D002B0844 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9A6FFF142837886D002B0844 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A6FFF172837886D002B0844 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9A6FFF1E2837888D002B0844 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9A6FFF20283788E0002B0844 /* SmartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartView.swift; sourceTree = "<group>"; };
+		9A6FFF2228378915002B0844 /* FocusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusView.swift; sourceTree = "<group>"; };
+		9A6FFF24283789C5002B0844 /* RelaxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelaxView.swift; sourceTree = "<group>"; };
+		9A6FFF26283789EE002B0844 /* BreathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathView.swift; sourceTree = "<group>"; };
+		9A6FFF2828378A55002B0844 /* GradientAnim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientAnim.swift; sourceTree = "<group>"; };
+		9A6FFF2A28378A76002B0844 /* FocusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusViewModel.swift; sourceTree = "<group>"; };
+		9A6FFF2C28378AB5002B0844 /* AudioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioService.swift; sourceTree = "<group>"; };
+		9A6FFF2E28378B45002B0844 /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
+		9A6FFF3028378B82002B0844 /* CirclesAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesAnimationView.swift; sourceTree = "<group>"; };
+		9A6FFF3228378BBB002B0844 /* PlayerAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAudioView.swift; sourceTree = "<group>"; };
+		9A6FFF3428378C10002B0844 /* TimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
+		9A6FFF3628378C3B002B0844 /* CircleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleModel.swift; sourceTree = "<group>"; };
+		9A6FFF3828378CF4002B0844 /* Quotes.xib */ = {isa = PBXFileReference; explicitFileType = text.json; path = Quotes.xib; sourceTree = "<group>"; };
+		9A6FFF3A28378D3E002B0844 /* sound1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound1.mp3; sourceTree = "<group>"; };
+		9A6FFF3B28378D3E002B0844 /* sound2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound2.mp3; sourceTree = "<group>"; };
+		9A6FFF3C28378D3E002B0844 /* relax1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = relax1.mp3; sourceTree = "<group>"; };
+		9A6FFF4228379DF0002B0844 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		9A6FFF4828379F74002B0844 /* RelaxView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RelaxView2.swift; path = "Focus Mode/RelaxView2.swift"; sourceTree = "<group>"; };
+		9A6FFF4A2837A58E002B0844 /* HomeFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFrameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				9A6FFF0F2837886D002B0844 /* RelaxMax */,
+				9A6FFF4228379DF0002B0844 /* Extension.swift */,
 				9A6FFF0E2837886D002B0844 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,7 +91,11 @@
 			isa = PBXGroup;
 			children = (
 				9A6FFF102837886D002B0844 /* RelaxMaxApp.swift */,
-				9A6FFF122837886D002B0844 /* ContentView.swift */,
+				9A6FFF4128378D66002B0844 /* Main Views */,
+				9A6FFF4428379E0D002B0844 /* SubViews */,
+				9A6FFF4528379E55002B0844 /* Helpers */,
+				9A6FFF4028378D4A002B0844 /* Media Assets */,
+				9A6FFF4628379EC3002B0844 /* New Group */,
 				9A6FFF142837886D002B0844 /* Assets.xcassets */,
 				9A6FFF162837886D002B0844 /* Preview Content */,
 			);
@@ -65,6 +108,77 @@
 				9A6FFF172837886D002B0844 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9A6FFF4028378D4A002B0844 /* Media Assets */ = {
+			isa = PBXGroup;
+			children = (
+				9A6FFF3828378CF4002B0844 /* Quotes.xib */,
+				9A6FFF3C28378D3E002B0844 /* relax1.mp3 */,
+				9A6FFF3A28378D3E002B0844 /* sound1.mp3 */,
+				9A6FFF3B28378D3E002B0844 /* sound2.mp3 */,
+			);
+			path = "Media Assets";
+			sourceTree = "<group>";
+		};
+		9A6FFF4128378D66002B0844 /* Main Views */ = {
+			isa = PBXGroup;
+			children = (
+				9A6FFF4C2837A59A002B0844 /* Home */,
+				9A6FFF4728379EDA002B0844 /* Focus Mode */,
+				9A6FFF26283789EE002B0844 /* BreathView.swift */,
+				9A6FFF24283789C5002B0844 /* RelaxView.swift */,
+				9A6FFF4828379F74002B0844 /* RelaxView2.swift */,
+				9A6FFF20283788E0002B0844 /* SmartView.swift */,
+			);
+			path = "Main Views";
+			sourceTree = "<group>";
+		};
+		9A6FFF4428379E0D002B0844 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				9A6FFF2828378A55002B0844 /* GradientAnim.swift */,
+				9A6FFF3228378BBB002B0844 /* PlayerAudioView.swift */,
+				9A6FFF3628378C3B002B0844 /* CircleModel.swift */,
+				9A6FFF2E28378B45002B0844 /* ClockView.swift */,
+				9A6FFF3028378B82002B0844 /* CirclesAnimationView.swift */,
+			);
+			name = SubViews;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		9A6FFF4528379E55002B0844 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9A6FFF3428378C10002B0844 /* TimerService.swift */,
+				9A6FFF2C28378AB5002B0844 /* AudioService.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9A6FFF4628379EC3002B0844 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		9A6FFF4728379EDA002B0844 /* Focus Mode */ = {
+			isa = PBXGroup;
+			children = (
+				9A6FFF2228378915002B0844 /* FocusView.swift */,
+				9A6FFF2A28378A76002B0844 /* FocusViewModel.swift */,
+			);
+			path = "Focus Mode";
+			sourceTree = "<group>";
+		};
+		9A6FFF4C2837A59A002B0844 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				9A6FFF1E2837888D002B0844 /* HomeView.swift */,
+				9A6FFF4A2837A58E002B0844 /* HomeFrameView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,8 +239,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A6FFF3E28378D3E002B0844 /* sound2.mp3 in Resources */,
 				9A6FFF182837886D002B0844 /* Preview Assets.xcassets in Resources */,
 				9A6FFF152837886D002B0844 /* Assets.xcassets in Resources */,
+				9A6FFF3F28378D3E002B0844 /* relax1.mp3 in Resources */,
+				9A6FFF3D28378D3E002B0844 /* sound1.mp3 in Resources */,
+				9A6FFF3928378CF4002B0844 /* Quotes.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +255,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A6FFF132837886D002B0844 /* ContentView.swift in Sources */,
+				9A6FFF3728378C3B002B0844 /* CircleModel.swift in Sources */,
+				9A6FFF2D28378AB5002B0844 /* AudioService.swift in Sources */,
+				9A6FFF3128378B82002B0844 /* CirclesAnimationView.swift in Sources */,
+				9A6FFF2928378A55002B0844 /* GradientAnim.swift in Sources */,
+				9A6FFF4928379F74002B0844 /* RelaxView2.swift in Sources */,
+				9A6FFF21283788E0002B0844 /* SmartView.swift in Sources */,
+				9A6FFF4B2837A58E002B0844 /* HomeFrameView.swift in Sources */,
+				9A6FFF2F28378B45002B0844 /* ClockView.swift in Sources */,
+				9A6FFF1F2837888D002B0844 /* HomeView.swift in Sources */,
+				9A6FFF4328379DF0002B0844 /* Extension.swift in Sources */,
+				9A6FFF3328378BBB002B0844 /* PlayerAudioView.swift in Sources */,
+				9A6FFF25283789C5002B0844 /* RelaxView.swift in Sources */,
 				9A6FFF112837886D002B0844 /* RelaxMaxApp.swift in Sources */,
+				9A6FFF2328378915002B0844 /* FocusView.swift in Sources */,
+				9A6FFF3528378C10002B0844 /* TimerService.swift in Sources */,
+				9A6FFF27283789EE002B0844 /* BreathView.swift in Sources */,
+				9A6FFF2B28378A76002B0844 /* FocusViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
