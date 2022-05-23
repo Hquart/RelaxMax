@@ -38,6 +38,9 @@ class AudioPlayer: ObservableObject {
     func isPlayingAudio() -> Bool {
         return player.isPlaying
     }
+    func stopAudio() {
+        player.stop()
+    }
     ////////////////////////////////////////////////////////////////////////////////////////////////
     func nextTrack() {
         print("play next track")

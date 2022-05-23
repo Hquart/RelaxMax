@@ -24,8 +24,9 @@ class FocusViewViewModel: ObservableObject {
                     Drink water...
                     """
     
-    var breakDurationOptions = ["10 mn", "15 mn", "20 mn", "10 sec"]
-    var breakGapOptions = ["45 mn", "60 mn", "90 mn", "10 sec"]
+    
+    var breakDurationOptions = ["10 mn", "15 mn", "20 mn", "Test"]
+    var breakGapOptions = ["45 mn", "60 mn", "90 mn", "Test"]
     
 ////////////////////////////////////////////////////////////////////////////////////////////////
     func setBreakDuration(index: Int) {
@@ -47,5 +48,7 @@ class FocusViewViewModel: ObservableObject {
         default: self.breakGap = 60 * 60
         }
     }
+    
+    
 
 }

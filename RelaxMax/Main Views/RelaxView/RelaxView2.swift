@@ -77,7 +77,6 @@ struct RelaxView2: View {
                     self.rotateIn3D.toggle()
                 }
         }
-        //        .pickerStyle(Timer)
     }
 }
 

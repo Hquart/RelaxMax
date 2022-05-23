@@ -23,13 +23,19 @@
 		9A6FFF3328378BBB002B0844 /* PlayerAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF3228378BBB002B0844 /* PlayerAudioView.swift */; };
 		9A6FFF3528378C10002B0844 /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF3428378C10002B0844 /* TimerService.swift */; };
 		9A6FFF3728378C3B002B0844 /* CircleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF3628378C3B002B0844 /* CircleModel.swift */; };
-		9A6FFF3928378CF4002B0844 /* Quotes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6FFF3828378CF4002B0844 /* Quotes.xib */; };
 		9A6FFF3D28378D3E002B0844 /* sound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9A6FFF3A28378D3E002B0844 /* sound1.mp3 */; };
 		9A6FFF3E28378D3E002B0844 /* sound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9A6FFF3B28378D3E002B0844 /* sound2.mp3 */; };
 		9A6FFF3F28378D3E002B0844 /* relax1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9A6FFF3C28378D3E002B0844 /* relax1.mp3 */; };
-		9A6FFF4328379DF0002B0844 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF4228379DF0002B0844 /* Extension.swift */; };
+		9A6FFF4328379DF0002B0844 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF4228379DF0002B0844 /* Extensions.swift */; };
 		9A6FFF4928379F74002B0844 /* RelaxView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF4828379F74002B0844 /* RelaxView2.swift */; };
 		9A6FFF4B2837A58E002B0844 /* HomeFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF4A2837A58E002B0844 /* HomeFrameView.swift */; };
+		9A6FFF4E2837F09B002B0844 /* quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A6FFF4D2837F09B002B0844 /* quotes.json */; };
+		9A6FFF502837F0CF002B0844 /* QuoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF4F2837F0CF002B0844 /* QuoteService.swift */; };
+		9A6FFF532838D1DB002B0844 /* BreathView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF522838D1DB002B0844 /* BreathView2.swift */; };
+		9A6FFF562838F1D6002B0844 /* FlowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF552838F1D6002B0844 /* FlowerView.swift */; };
+		9A6FFF592838FE91002B0844 /* BreathViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF582838FE91002B0844 /* BreathViewModel.swift */; };
+		9A8FA2EF283A65D100F6DBB8 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9A8FA2EE283A65D100F6DBB8 /* bell.wav */; };
+		9A8FA2F1283A6CE300F6DBB8 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8FA2F0283A6CE300F6DBB8 /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,13 +56,19 @@
 		9A6FFF3228378BBB002B0844 /* PlayerAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAudioView.swift; sourceTree = "<group>"; };
 		9A6FFF3428378C10002B0844 /* TimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
 		9A6FFF3628378C3B002B0844 /* CircleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleModel.swift; sourceTree = "<group>"; };
-		9A6FFF3828378CF4002B0844 /* Quotes.xib */ = {isa = PBXFileReference; explicitFileType = text.json; path = Quotes.xib; sourceTree = "<group>"; };
 		9A6FFF3A28378D3E002B0844 /* sound1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound1.mp3; sourceTree = "<group>"; };
 		9A6FFF3B28378D3E002B0844 /* sound2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound2.mp3; sourceTree = "<group>"; };
 		9A6FFF3C28378D3E002B0844 /* relax1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = relax1.mp3; sourceTree = "<group>"; };
-		9A6FFF4228379DF0002B0844 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		9A6FFF4828379F74002B0844 /* RelaxView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RelaxView2.swift; path = "Focus Mode/RelaxView2.swift"; sourceTree = "<group>"; };
+		9A6FFF4228379DF0002B0844 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9A6FFF4828379F74002B0844 /* RelaxView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelaxView2.swift; sourceTree = "<group>"; };
 		9A6FFF4A2837A58E002B0844 /* HomeFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFrameView.swift; sourceTree = "<group>"; };
+		9A6FFF4D2837F09B002B0844 /* quotes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quotes.json; sourceTree = "<group>"; };
+		9A6FFF4F2837F0CF002B0844 /* QuoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteService.swift; sourceTree = "<group>"; };
+		9A6FFF522838D1DB002B0844 /* BreathView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathView2.swift; sourceTree = "<group>"; };
+		9A6FFF552838F1D6002B0844 /* FlowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerView.swift; sourceTree = "<group>"; };
+		9A6FFF582838FE91002B0844 /* BreathViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathViewModel.swift; sourceTree = "<group>"; };
+		9A8FA2EE283A65D100F6DBB8 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell.wav; sourceTree = "<group>"; };
+		9A8FA2F0283A6CE300F6DBB8 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				9A6FFF0F2837886D002B0844 /* RelaxMax */,
-				9A6FFF4228379DF0002B0844 /* Extension.swift */,
 				9A6FFF0E2837886D002B0844 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,6 +106,7 @@
 				9A6FFF4428379E0D002B0844 /* SubViews */,
 				9A6FFF4528379E55002B0844 /* Helpers */,
 				9A6FFF4028378D4A002B0844 /* Media Assets */,
+				9A6FFF512837F0E0002B0844 /* DataModels */,
 				9A6FFF4628379EC3002B0844 /* New Group */,
 				9A6FFF142837886D002B0844 /* Assets.xcassets */,
 				9A6FFF162837886D002B0844 /* Preview Content */,
@@ -113,9 +125,10 @@
 		9A6FFF4028378D4A002B0844 /* Media Assets */ = {
 			isa = PBXGroup;
 			children = (
-				9A6FFF3828378CF4002B0844 /* Quotes.xib */,
+				9A6FFF4D2837F09B002B0844 /* quotes.json */,
 				9A6FFF3C28378D3E002B0844 /* relax1.mp3 */,
 				9A6FFF3A28378D3E002B0844 /* sound1.mp3 */,
+				9A8FA2EE283A65D100F6DBB8 /* bell.wav */,
 				9A6FFF3B28378D3E002B0844 /* sound2.mp3 */,
 			);
 			path = "Media Assets";
@@ -124,12 +137,11 @@
 		9A6FFF4128378D66002B0844 /* Main Views */ = {
 			isa = PBXGroup;
 			children = (
+				9A6FFF20283788E0002B0844 /* SmartView.swift */,
 				9A6FFF4C2837A59A002B0844 /* Home */,
 				9A6FFF4728379EDA002B0844 /* Focus Mode */,
-				9A6FFF26283789EE002B0844 /* BreathView.swift */,
-				9A6FFF24283789C5002B0844 /* RelaxView.swift */,
-				9A6FFF4828379F74002B0844 /* RelaxView2.swift */,
-				9A6FFF20283788E0002B0844 /* SmartView.swift */,
+				9A6FFF542838EE0C002B0844 /* Breath */,
+				9A6FFF572838F636002B0844 /* RelaxView */,
 			);
 			path = "Main Views";
 			sourceTree = "<group>";
@@ -137,11 +149,12 @@
 		9A6FFF4428379E0D002B0844 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				9A6FFF2E28378B45002B0844 /* ClockView.swift */,
 				9A6FFF2828378A55002B0844 /* GradientAnim.swift */,
 				9A6FFF3228378BBB002B0844 /* PlayerAudioView.swift */,
 				9A6FFF3628378C3B002B0844 /* CircleModel.swift */,
-				9A6FFF2E28378B45002B0844 /* ClockView.swift */,
 				9A6FFF3028378B82002B0844 /* CirclesAnimationView.swift */,
+				9A8FA2F0283A6CE300F6DBB8 /* TestView.swift */,
 			);
 			name = SubViews;
 			path = ..;
@@ -152,6 +165,8 @@
 			children = (
 				9A6FFF3428378C10002B0844 /* TimerService.swift */,
 				9A6FFF2C28378AB5002B0844 /* AudioService.swift */,
+				9A6FFF4F2837F0CF002B0844 /* QuoteService.swift */,
+				9A6FFF4228379DF0002B0844 /* Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -179,6 +194,33 @@
 				9A6FFF4A2837A58E002B0844 /* HomeFrameView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		9A6FFF512837F0E0002B0844 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataModels;
+			sourceTree = "<group>";
+		};
+		9A6FFF542838EE0C002B0844 /* Breath */ = {
+			isa = PBXGroup;
+			children = (
+				9A6FFF26283789EE002B0844 /* BreathView.swift */,
+				9A6FFF522838D1DB002B0844 /* BreathView2.swift */,
+				9A6FFF582838FE91002B0844 /* BreathViewModel.swift */,
+				9A6FFF552838F1D6002B0844 /* FlowerView.swift */,
+			);
+			path = Breath;
+			sourceTree = "<group>";
+		};
+		9A6FFF572838F636002B0844 /* RelaxView */ = {
+			isa = PBXGroup;
+			children = (
+				9A6FFF24283789C5002B0844 /* RelaxView.swift */,
+				9A6FFF4828379F74002B0844 /* RelaxView2.swift */,
+			);
+			path = RelaxView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,12 +281,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A8FA2EF283A65D100F6DBB8 /* bell.wav in Resources */,
 				9A6FFF3E28378D3E002B0844 /* sound2.mp3 in Resources */,
 				9A6FFF182837886D002B0844 /* Preview Assets.xcassets in Resources */,
+				9A6FFF4E2837F09B002B0844 /* quotes.json in Resources */,
 				9A6FFF152837886D002B0844 /* Assets.xcassets in Resources */,
 				9A6FFF3F28378D3E002B0844 /* relax1.mp3 in Resources */,
 				9A6FFF3D28378D3E002B0844 /* sound1.mp3 in Resources */,
-				9A6FFF3928378CF4002B0844 /* Quotes.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,19 +300,24 @@
 			files = (
 				9A6FFF3728378C3B002B0844 /* CircleModel.swift in Sources */,
 				9A6FFF2D28378AB5002B0844 /* AudioService.swift in Sources */,
+				9A8FA2F1283A6CE300F6DBB8 /* TestView.swift in Sources */,
 				9A6FFF3128378B82002B0844 /* CirclesAnimationView.swift in Sources */,
 				9A6FFF2928378A55002B0844 /* GradientAnim.swift in Sources */,
+				9A6FFF502837F0CF002B0844 /* QuoteService.swift in Sources */,
 				9A6FFF4928379F74002B0844 /* RelaxView2.swift in Sources */,
 				9A6FFF21283788E0002B0844 /* SmartView.swift in Sources */,
 				9A6FFF4B2837A58E002B0844 /* HomeFrameView.swift in Sources */,
 				9A6FFF2F28378B45002B0844 /* ClockView.swift in Sources */,
 				9A6FFF1F2837888D002B0844 /* HomeView.swift in Sources */,
-				9A6FFF4328379DF0002B0844 /* Extension.swift in Sources */,
+				9A6FFF4328379DF0002B0844 /* Extensions.swift in Sources */,
 				9A6FFF3328378BBB002B0844 /* PlayerAudioView.swift in Sources */,
+				9A6FFF592838FE91002B0844 /* BreathViewModel.swift in Sources */,
+				9A6FFF532838D1DB002B0844 /* BreathView2.swift in Sources */,
 				9A6FFF25283789C5002B0844 /* RelaxView.swift in Sources */,
 				9A6FFF112837886D002B0844 /* RelaxMaxApp.swift in Sources */,
 				9A6FFF2328378915002B0844 /* FocusView.swift in Sources */,
 				9A6FFF3528378C10002B0844 /* TimerService.swift in Sources */,
+				9A6FFF562838F1D6002B0844 /* FlowerView.swift in Sources */,
 				9A6FFF27283789EE002B0844 /* BreathView.swift in Sources */,
 				9A6FFF2B28378A76002B0844 /* FocusViewModel.swift in Sources */,
 			);

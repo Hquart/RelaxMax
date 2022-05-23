@@ -10,6 +10,7 @@ import SwiftUI
 struct FocusView: View {
     
     @ObservedObject var vm = FocusViewViewModel()
+    @ObservedObject var quoteService = QuoteService()
 
     @ObservedObject var whiteNoisePlayer = AudioPlayer(name: "sound2", type: "mp3", volume: 0.5, fadeDuration: 5.0)
     @ObservedObject var breakMusicPlayer = AudioPlayer(name: "sound1", type: "mp3", volume: 0.5, fadeDuration: 5.0)
@@ -25,19 +26,24 @@ struct FocusView: View {
     
     @State private var showStartMode: Bool = false
     ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///------------ BODY ------------------
+    ////////////////////////////////////////////////////////////////////////////////////////////////
     var body: some View {
         GeometryReader { geo in
             ZStack {
                 GradientAnim(color1: .green, color2: .blue, color3: .orange, color4: .blue)
                     .ignoresSafeArea()
+                ////////////////////////////////////////////////////////////////////////////////////////////////
                 VStack {
                     Spacer()
                     ClockView().padding()
+                    ////////////////////////////////////////////////////////////////////////////////////////////////
                     ZStack {
                         goodMorning
                         quote
                             .padding(.bottom, 30)
                     }
+                    ////////////////////////////////////////////////////////////////////////////////////////////////
                     ZStack {
                         if showStartMode {
                             VStack {
@@ -54,9 +60,11 @@ struct FocusView: View {
                             PlayerAudioView(isPlaying: $isPlaying, showNextButton: false, player: breakMusicPlayer)
                         }
                     }
+                    ////////////////////////////////////////////////////////////////////////////////////////////////
                     if showBreakMessage {
                         breakMessage
                     }
+                    ////////////////////////////////////////////////////////////////////////////////////////////////
                     Spacer()
                 }
             }
@@ -70,6 +78,7 @@ struct FocusView: View {
     ///------------FUNCTIONS------------------
     ////////////////////////////////////////////////////////////////////////////////////////////////
     func welcome() {
+        quoteService.getNewQuote()
         withAnimation(Animation.easeIn(duration: 2)) {
             showGoodMorning = true
         }
@@ -122,7 +131,7 @@ struct FocusView: View {
     }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
-///------------FOCUS VIEW -------- EXTENSION
+///------------VIEW  EXTENSION --------
 ////////////////////////////////////////////////////////////////////////////////////////////////
 extension FocusView {
     
@@ -135,7 +144,7 @@ extension FocusView {
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
     private var quote: some View {
-        Text(vm.quoteText)
+        Text(quoteService.current)
             .italic()
             .multilineTextAlignment(.center)
             .font(.title)
@@ -175,10 +184,9 @@ extension FocusView {
     private var breakPickers: some View {
         HStack {
             Menu {
-                Button(vm.breakDurationOptions[0], action: { vm.setBreakDuration(index: 0)})
-                Button(vm.breakDurationOptions[1], action: { vm.setBreakDuration(index: 1)})
-                Button(vm.breakDurationOptions[2], action: { vm.setBreakDuration(index: 2)})
-                Button(vm.breakDurationOptions[3], action: { vm.setBreakDuration(index: 3)})
+                ForEach(0..<4, id: \.self) { index in
+                    Button(vm.breakDurationOptions[index], action: { vm.setBreakDuration(index: index)})
+                }
             } label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: 40)
@@ -192,10 +200,9 @@ extension FocusView {
             Text(" break every ").foregroundColor(Color.white).opacity(0.5)
             ////////////////////////////////////////////////////////////////////////////////////////////////
             Menu {
-                Button(vm.breakGapOptions[0], action: { vm.setBreakGap(index: 0)})
-                Button(vm.breakGapOptions[1], action: { vm.setBreakGap(index: 1)})
-                Button(vm.breakGapOptions[2], action: { vm.setBreakGap(index: 2)})
-                Button(vm.breakGapOptions[3], action: { vm.setBreakGap(index: 3)})
+                ForEach(0..<4, id: \.self) { index in
+                    Button(vm.breakGapOptions[index], action: { vm.setBreakGap(index: index)})
+                }
             } label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: 40)
@@ -209,7 +216,7 @@ extension FocusView {
         }
     }
 }
-//////////////////////////////////////////////////////////////////////////////////////////////// ////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
 // ---------- PREVIEW ----------------
 ////////////////////////////////////////////////////////////////////////////////////////////////
 struct FocusView_Previews: PreviewProvider {

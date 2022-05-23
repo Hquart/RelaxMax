@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GradientAnim: View {
+    
     @State private var progress: CGFloat = 0
     
     let color1: Color
@@ -21,22 +22,19 @@ struct GradientAnim: View {
         self.color3 = color3
         self.color4 = color4
     }
-     
         var body: some View {
             Rectangle()
                 .animatableGradient(fromGradient: Gradient(colors: [color1, color2]),
                                     toGradient: Gradient(colors: [color3, color4]),
                                          progress: progress)
                 .ignoresSafeArea()
-                .onAppear {
-                    withAnimation(.linear(duration: 10.0).repeatForever(autoreverses: true)) {
-                        self.progress = 1.0
-                    }
-                }
+//                .onAppear {
+//                    withAnimation(.linear(duration: 10.0).repeatForever(autoreverses: true)) {
+//                        self.progress = 1.0
+//                    }
+//                }
         }
 }
-
-
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //struct GradientAnim_Previews: PreviewProvider {
 //    static var previews: some View {
@@ -78,8 +76,6 @@ struct GradientAnim: View {
             return Color(red: Double(red), green: Double(green), blue: Double(blue))
         }
     }
-
-
     ////////////////////////////////////////////////////////////////////////////////////////////////
     extension View {
         func animatableGradient(fromGradient: Gradient, toGradient: Gradient, progress: CGFloat) -> some View {

@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import SwiftUI
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// EXTENSIONS
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extension Bundle {
+    
     func decode<T: Codable>(_ file: String) -> T {
         guard let url = self.url(forResource: file, withExtension: nil) else {
             fatalError("Failed to locate \(file) in bundle.")
@@ -30,5 +32,15 @@ extension Bundle {
             fatalError("Failed to decode \(file) from bundle.")
         }
         return loaded
+    }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+extension Animation {
+    func `repeat`(while expression: Bool, autoreverses: Bool = true) -> Animation {
+        if expression {
+            return self.repeatForever(autoreverses: autoreverses)
+        } else {
+            return self
+        }
     }
 }
