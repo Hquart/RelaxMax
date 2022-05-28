@@ -11,9 +11,13 @@ import CoreHaptics
 struct BreathView: View {
     
     @ObservedObject var vm = BreathViewModel()
+    @ObservedObject var quoteService = QuoteService()
+    
     @State private var isBreathing: Bool = false
-    @State private var showBreathingMessage: Bool = false
+    @State private var breathingCompleted: Bool = false
     @State private var showInfo: Bool = false
+    @State private var stopButtonWasPressed = false
+    
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -51,8 +55,11 @@ struct BreathView: View {
                 }
                     .padding()
                     actionButton
-                if showBreathingMessage {
-                    
+                
+                             
+                if breathingCompleted {
+                    quote
+                        .padding(.top, 50)
                 }
             }
         }
@@ -68,33 +75,48 @@ struct BreathView: View {
     ///------------FUNCTIONS------------------
     ////////////////////////////////////////////////////////////////////////////////////////////////
     func startBreathing() {
+        stopButtonWasPressed = false
+        withAnimation(Animation.easeOut(duration: 1)) {
+        breathingCompleted = false
+        }
+        quoteService.getNewQuote()
         withAnimation(.linear(duration: 2.0)) {
         isBreathing = true
+            if stopButtonWasPressed == false {
         soundAndVibrate()
+            }
         }
         var count: Int = 1
        
         print("breath Count: \(count) / \(vm.breathCount)")
         Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
             count += 1
+            if isBreathing && stopButtonWasPressed == false {
+            soundAndVibrate()
+            }
             print("breath Count: \(count) / \(vm.breathCount)")
             if isBreathing == false || count == vm.breathCount {
-                stopBreathing()
+                chimeSound.stopAudio()
+                isBreathing = false
+                if    stopButtonWasPressed == false {
+                soundAndVibrate()
+                }
                 timer.invalidate()
             }
-            if isBreathing {
-            soundAndVibrate()
+            if count == vm.breathCount && stopButtonWasPressed == false {
+                withAnimation(.linear(duration: 1)) {
+                    breathingCompleted = true
+                }
             }
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    func stopBreathing() {
-        withAnimation(Animation.easeOut(duration: 1)) {
-            chimeSound.stopAudio()
-            withAnimation(.linear(duration: 2.0)) {
-            isBreathing = false
-            }
-            print("stop")
+    func stopButtonPressed() {
+        stopButtonWasPressed = true
+        chimeSound.stopAudio()
+        isBreathing = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            stopButtonWasPressed = false
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -104,7 +126,6 @@ struct BreathView: View {
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////
 }
-
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ///------------ VIEW EXTENSION ------------------
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -120,10 +141,19 @@ extension BreathView {
             .opacity(0.8)
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////
-
+    private var quote: some View {
+        Text(quoteService.current)
+       
+            .italic().bold()
+            .multilineTextAlignment(.center)
+            .font(.title).scaleEffect(1)
+            .foregroundColor(Color.appDarkBlue)
+            .padding()
+            .opacity(breathingCompleted ? 1 : 0.0)
+    }
 ////////////////////////////////////////////////////////////////////////////////////////////////
     private var actionButton: some View {
-        Button(action: { isBreathing ? stopBreathing() : startBreathing() }) {
+        Button(action: { isBreathing ? stopButtonPressed() : startBreathing() }) {
             Text(isBreathing ? "End Session" : "Start")
                     .font(.headline)
                     .foregroundColor(isBreathing ? .white : .appDarkBlue).scaleEffect(1.2)
@@ -134,13 +164,15 @@ extension BreathView {
                     .opacity(isBreathing ? 0.6 : 1)
                     .shadow(color: .black, radius: 5)
             }
+        .disabled(stopButtonWasPressed)
         }
 ////////////////////////////////////////////////////////////////////////////////////////////////
     private var backButton: some View {
         Button(action: {
+            chimeSound.stopAudio()
+            isBreathing = false
+         
             self.presentationMode.wrappedValue.dismiss()
-            stopBreathing()
-            
         }) {
             Image(systemName: "chevron.backward.circle")
                 .foregroundColor(Color.white).shadow(radius: 5)

@@ -28,6 +28,8 @@ class FocusViewViewModel: ObservableObject {
     var breakDurationOptions = ["10 mn", "15 mn", "20 mn", "Test"]
     var breakGapOptions = ["45 mn", "60 mn", "90 mn", "Test"]
     
+  
+    
 ////////////////////////////////////////////////////////////////////////////////////////////////
     func setBreakDuration(index: Int) {
         switch index {

@@ -17,7 +17,7 @@ struct FocusView: View {
     @ObservedObject var whiteNoisePlayer = AudioPlayer(name: "sound2", type: "mp3", volume:1, fadeDuration: 0.0)
     @ObservedObject var breakMusicPlayer = AudioPlayer(name: "marconi", type: "mp3", volume: 1, fadeDuration: 5.0)
     
-    @State private var showGoodMorning: Bool = false
+    @State private var showHello: Bool = false
     @State private var showQuote: Bool = false
     
     @State private var isWorking: Bool = false
@@ -134,7 +134,6 @@ struct FocusView: View {
                                             self.progress = 1.0
                                         }
                                                       }
-        
         }
     }
     }
@@ -147,14 +146,13 @@ struct FocusView: View {
     ///------------FUNCTIONS------------------
     ////////////////////////////////////////////////////////////////////////////////////////////////
     func welcome() {
-     
         quoteService.getNewQuote()
         withAnimation(Animation.easeIn(duration: 1.5)) {
-            showGoodMorning = true
+            showHello = true
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             withAnimation(Animation.easeOut(duration: 2)) {
-                showGoodMorning = false
+                showHello = false
                 showQuote = true
             }
         }
@@ -214,7 +212,7 @@ extension FocusView {
             .font(.title)
             .foregroundColor(Color.appDarkBlue)
             .transition(.asymmetric(insertion: .opacity, removal: .opacity))
-            .opacity(showGoodMorning ? 0.8 : 0.0)
+            .opacity(showHello ? 0.8 : 0.0)
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
     private var quote: some View {

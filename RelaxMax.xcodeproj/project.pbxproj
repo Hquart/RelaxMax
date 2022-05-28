@@ -31,7 +31,7 @@
 		9A6FFF4B2837A58E002B0844 /* HomeFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF4A2837A58E002B0844 /* HomeFrameView.swift */; };
 		9A6FFF4E2837F09B002B0844 /* quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A6FFF4D2837F09B002B0844 /* quotes.json */; };
 		9A6FFF502837F0CF002B0844 /* QuoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF4F2837F0CF002B0844 /* QuoteService.swift */; };
-		9A6FFF532838D1DB002B0844 /* BreathView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF522838D1DB002B0844 /* BreathView2.swift */; };
+		9A6FFF532838D1DB002B0844 /* BreathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF522838D1DB002B0844 /* BreathView.swift */; };
 		9A6FFF562838F1D6002B0844 /* FlowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF552838F1D6002B0844 /* FlowerView.swift */; };
 		9A6FFF592838FE91002B0844 /* BreathViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF582838FE91002B0844 /* BreathViewModel.swift */; };
 		9A8FA2EF283A65D100F6DBB8 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9A8FA2EE283A65D100F6DBB8 /* bell.wav */; };
@@ -73,7 +73,7 @@
 		9A6FFF4A2837A58E002B0844 /* HomeFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFrameView.swift; sourceTree = "<group>"; };
 		9A6FFF4D2837F09B002B0844 /* quotes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quotes.json; sourceTree = "<group>"; };
 		9A6FFF4F2837F0CF002B0844 /* QuoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteService.swift; sourceTree = "<group>"; };
-		9A6FFF522838D1DB002B0844 /* BreathView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathView2.swift; sourceTree = "<group>"; };
+		9A6FFF522838D1DB002B0844 /* BreathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathView.swift; sourceTree = "<group>"; };
 		9A6FFF552838F1D6002B0844 /* FlowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerView.swift; sourceTree = "<group>"; };
 		9A6FFF582838FE91002B0844 /* BreathViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathViewModel.swift; sourceTree = "<group>"; };
 		9A8FA2EE283A65D100F6DBB8 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell.wav; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				9A8FA2F8283CCB4200F6DBB8 /* BreathInfoView.swift */,
-				9A6FFF522838D1DB002B0844 /* BreathView2.swift */,
+				9A6FFF522838D1DB002B0844 /* BreathView.swift */,
 				9A6FFF582838FE91002B0844 /* BreathViewModel.swift */,
 				9A6FFF552838F1D6002B0844 /* FlowerView.swift */,
 			);
@@ -346,7 +346,7 @@
 				9A8FA306283F772900F6DBB8 /* FocusFrameView.swift in Sources */,
 				9A8FA304283F6D3B00F6DBB8 /* BreathFrameView.swift in Sources */,
 				9A6FFF592838FE91002B0844 /* BreathViewModel.swift in Sources */,
-				9A6FFF532838D1DB002B0844 /* BreathView2.swift in Sources */,
+				9A6FFF532838D1DB002B0844 /* BreathView.swift in Sources */,
 				9A8FA2FD283E217600F6DBB8 /* SmartInfoView.swift in Sources */,
 				9A6FFF25283789C5002B0844 /* RelaxView.swift in Sources */,
 				9A6FFF112837886D002B0844 /* RelaxMaxApp.swift in Sources */,
