@@ -29,9 +29,6 @@ struct FlowerView: View {
         .animation(Animation.easeInOut(duration: 5.0)
             .repeat(while: animFlower, autoreverses: true), value: animFlower)
     }
-    func resetFlower() {
-        
-    }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
 struct Petal: View {

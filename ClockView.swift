@@ -80,9 +80,9 @@ struct ClockView: View {
     func tick(at tick: Int) -> some View {
                VStack {
                    Rectangle()
-                       .fill(Color.white)
-                       .opacity(tick % 5 == 0 ? 0.2 : 0.0)
-                       .frame(width: 2, height: tick % 5 == 0 ? 15 : 7)
+                       .fill(Color.black)
+                       .opacity(tick % 5 == 0 ? 1 : 0.1)
+                       .frame(width: 3, height: tick % 5 == 0 ? 20 : 10)
                    Spacer()
            }.rotationEffect(Angle.degrees(Double(tick)/(60) * 360))
     }
@@ -94,19 +94,6 @@ struct ClockView: View {
             }
             GeometryReader { geometry in
                 ZStack {
-//                    HStack {
-//                        Text("9")
-//                        Spacer()
-//                        Text("3")
-//                        EmptyView()
-//                    }
-//                    VStack {
-//                        EmptyView()
-//                        Text("12")
-//                        Spacer()
-//                        Text("6")
-//                        EmptyView()
-//                    }
                 }
                 .frame(width: geometry.size.width - 40, height: geometry.size.height - 30, alignment: .center)
             }
@@ -118,18 +105,23 @@ struct ClockView: View {
             Clock(model: .init(type: .minute, timeInterval: time.seconds, tickScale: 0.6))
             .stroke(Color.green, style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
                 .rotationEffect(Angle.degrees(360/60))
-            
-//            Clock(model: .init(type: .second, timeInterval: time.seconds, tickScale: 0.8))
-//            .stroke(Color.orange, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
-//                .rotationEffect(Angle.degrees(360/60))
-            
             }.frame(width: 200, height: 200, alignment: .center)
     }
 }
 
 struct ClockView_Previews: PreviewProvider {
    static var previews: some View {
-       ClockView()
+       TestClock()
            .previewDevice("iPhone 13")
    }
+}
+
+struct TestClock: View {
+    
+    var body: some View {
+        ZStack {
+            Color.gray
+            ClockView()
+        }
+    }
 }

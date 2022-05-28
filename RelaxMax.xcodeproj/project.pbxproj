@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A02F972283F80DC00C1737D /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A02F971283F80DC00C1737D /* VideoPlayer.swift */; };
 		9A6FFF112837886D002B0844 /* RelaxMaxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF102837886D002B0844 /* RelaxMaxApp.swift */; };
 		9A6FFF152837886D002B0844 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A6FFF142837886D002B0844 /* Assets.xcassets */; };
 		9A6FFF182837886D002B0844 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A6FFF172837886D002B0844 /* Preview Assets.xcassets */; };
@@ -14,7 +15,6 @@
 		9A6FFF21283788E0002B0844 /* SmartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF20283788E0002B0844 /* SmartView.swift */; };
 		9A6FFF2328378915002B0844 /* FocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF2228378915002B0844 /* FocusView.swift */; };
 		9A6FFF25283789C5002B0844 /* RelaxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF24283789C5002B0844 /* RelaxView.swift */; };
-		9A6FFF27283789EE002B0844 /* BreathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF26283789EE002B0844 /* BreathView.swift */; };
 		9A6FFF2928378A55002B0844 /* GradientAnim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF2828378A55002B0844 /* GradientAnim.swift */; };
 		9A6FFF2B28378A76002B0844 /* FocusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF2A28378A76002B0844 /* FocusViewModel.swift */; };
 		9A6FFF2D28378AB5002B0844 /* AudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF2C28378AB5002B0844 /* AudioService.swift */; };
@@ -36,9 +36,19 @@
 		9A6FFF592838FE91002B0844 /* BreathViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF582838FE91002B0844 /* BreathViewModel.swift */; };
 		9A8FA2EF283A65D100F6DBB8 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9A8FA2EE283A65D100F6DBB8 /* bell.wav */; };
 		9A8FA2F1283A6CE300F6DBB8 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8FA2F0283A6CE300F6DBB8 /* TestView.swift */; };
+		9A8FA2F5283BC7C000F6DBB8 /* SpringAnim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8FA2F4283BC7C000F6DBB8 /* SpringAnim.swift */; };
+		9A8FA2F7283CC46900F6DBB8 /* FocusInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8FA2F6283CC46900F6DBB8 /* FocusInfoView.swift */; };
+		9A8FA2F9283CCB4200F6DBB8 /* BreathInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8FA2F8283CCB4200F6DBB8 /* BreathInfoView.swift */; };
+		9A8FA2FB283D4A5400F6DBB8 /* marconi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9A8FA2FA283D4A5400F6DBB8 /* marconi.mp3 */; };
+		9A8FA2FD283E217600F6DBB8 /* SmartInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8FA2FC283E217600F6DBB8 /* SmartInfoView.swift */; };
+		9A8FA302283F6C3F00F6DBB8 /* SmartFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8FA301283F6C3F00F6DBB8 /* SmartFrameView.swift */; };
+		9A8FA304283F6D3B00F6DBB8 /* BreathFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8FA303283F6D3B00F6DBB8 /* BreathFrameView.swift */; };
+		9A8FA306283F772900F6DBB8 /* FocusFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8FA305283F772900F6DBB8 /* FocusFrameView.swift */; };
+		9A8FA308283F7F9800F6DBB8 /* spaceVideo.mov in Resources */ = {isa = PBXBuildFile; fileRef = 9A8FA307283F7F9800F6DBB8 /* spaceVideo.mov */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A02F971283F80DC00C1737D /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
 		9A6FFF0D2837886D002B0844 /* RelaxMax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RelaxMax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A6FFF102837886D002B0844 /* RelaxMaxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelaxMaxApp.swift; sourceTree = "<group>"; };
 		9A6FFF142837886D002B0844 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -47,7 +57,6 @@
 		9A6FFF20283788E0002B0844 /* SmartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartView.swift; sourceTree = "<group>"; };
 		9A6FFF2228378915002B0844 /* FocusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusView.swift; sourceTree = "<group>"; };
 		9A6FFF24283789C5002B0844 /* RelaxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelaxView.swift; sourceTree = "<group>"; };
-		9A6FFF26283789EE002B0844 /* BreathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathView.swift; sourceTree = "<group>"; };
 		9A6FFF2828378A55002B0844 /* GradientAnim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientAnim.swift; sourceTree = "<group>"; };
 		9A6FFF2A28378A76002B0844 /* FocusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusViewModel.swift; sourceTree = "<group>"; };
 		9A6FFF2C28378AB5002B0844 /* AudioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioService.swift; sourceTree = "<group>"; };
@@ -69,6 +78,15 @@
 		9A6FFF582838FE91002B0844 /* BreathViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathViewModel.swift; sourceTree = "<group>"; };
 		9A8FA2EE283A65D100F6DBB8 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell.wav; sourceTree = "<group>"; };
 		9A8FA2F0283A6CE300F6DBB8 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		9A8FA2F4283BC7C000F6DBB8 /* SpringAnim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringAnim.swift; sourceTree = "<group>"; };
+		9A8FA2F6283CC46900F6DBB8 /* FocusInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusInfoView.swift; sourceTree = "<group>"; };
+		9A8FA2F8283CCB4200F6DBB8 /* BreathInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathInfoView.swift; sourceTree = "<group>"; };
+		9A8FA2FA283D4A5400F6DBB8 /* marconi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = marconi.mp3; sourceTree = "<group>"; };
+		9A8FA2FC283E217600F6DBB8 /* SmartInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartInfoView.swift; sourceTree = "<group>"; };
+		9A8FA301283F6C3F00F6DBB8 /* SmartFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartFrameView.swift; sourceTree = "<group>"; };
+		9A8FA303283F6D3B00F6DBB8 /* BreathFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BreathFrameView.swift; path = "RelaxMax/Main Views/BreathFrameView.swift"; sourceTree = SOURCE_ROOT; };
+		9A8FA305283F772900F6DBB8 /* FocusFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusFrameView.swift; sourceTree = "<group>"; };
+		9A8FA307283F7F9800F6DBB8 /* spaceVideo.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = spaceVideo.mov; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,9 +145,11 @@
 			children = (
 				9A6FFF4D2837F09B002B0844 /* quotes.json */,
 				9A6FFF3C28378D3E002B0844 /* relax1.mp3 */,
+				9A8FA2FA283D4A5400F6DBB8 /* marconi.mp3 */,
 				9A6FFF3A28378D3E002B0844 /* sound1.mp3 */,
 				9A8FA2EE283A65D100F6DBB8 /* bell.wav */,
 				9A6FFF3B28378D3E002B0844 /* sound2.mp3 */,
+				9A8FA307283F7F9800F6DBB8 /* spaceVideo.mov */,
 			);
 			path = "Media Assets";
 			sourceTree = "<group>";
@@ -137,8 +157,11 @@
 		9A6FFF4128378D66002B0844 /* Main Views */ = {
 			isa = PBXGroup;
 			children = (
-				9A6FFF20283788E0002B0844 /* SmartView.swift */,
-				9A6FFF4C2837A59A002B0844 /* Home */,
+				9A6FFF1E2837888D002B0844 /* HomeView.swift */,
+				9A8FA301283F6C3F00F6DBB8 /* SmartFrameView.swift */,
+				9A8FA305283F772900F6DBB8 /* FocusFrameView.swift */,
+				9A8FA303283F6D3B00F6DBB8 /* BreathFrameView.swift */,
+				9A8FA2FE283E219E00F6DBB8 /* Smart Mode */,
 				9A6FFF4728379EDA002B0844 /* Focus Mode */,
 				9A6FFF542838EE0C002B0844 /* Breath */,
 				9A6FFF572838F636002B0844 /* RelaxView */,
@@ -149,6 +172,7 @@
 		9A6FFF4428379E0D002B0844 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				9A6FFF4A2837A58E002B0844 /* HomeFrameView.swift */,
 				9A6FFF2E28378B45002B0844 /* ClockView.swift */,
 				9A6FFF2828378A55002B0844 /* GradientAnim.swift */,
 				9A6FFF3228378BBB002B0844 /* PlayerAudioView.swift */,
@@ -163,6 +187,7 @@
 		9A6FFF4528379E55002B0844 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				9A02F971283F80DC00C1737D /* VideoPlayer.swift */,
 				9A6FFF3428378C10002B0844 /* TimerService.swift */,
 				9A6FFF2C28378AB5002B0844 /* AudioService.swift */,
 				9A6FFF4F2837F0CF002B0844 /* QuoteService.swift */,
@@ -182,18 +207,10 @@
 			isa = PBXGroup;
 			children = (
 				9A6FFF2228378915002B0844 /* FocusView.swift */,
+				9A8FA2F6283CC46900F6DBB8 /* FocusInfoView.swift */,
 				9A6FFF2A28378A76002B0844 /* FocusViewModel.swift */,
 			);
 			path = "Focus Mode";
-			sourceTree = "<group>";
-		};
-		9A6FFF4C2837A59A002B0844 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				9A6FFF1E2837888D002B0844 /* HomeView.swift */,
-				9A6FFF4A2837A58E002B0844 /* HomeFrameView.swift */,
-			);
-			path = Home;
 			sourceTree = "<group>";
 		};
 		9A6FFF512837F0E0002B0844 /* DataModels */ = {
@@ -206,7 +223,7 @@
 		9A6FFF542838EE0C002B0844 /* Breath */ = {
 			isa = PBXGroup;
 			children = (
-				9A6FFF26283789EE002B0844 /* BreathView.swift */,
+				9A8FA2F8283CCB4200F6DBB8 /* BreathInfoView.swift */,
 				9A6FFF522838D1DB002B0844 /* BreathView2.swift */,
 				9A6FFF582838FE91002B0844 /* BreathViewModel.swift */,
 				9A6FFF552838F1D6002B0844 /* FlowerView.swift */,
@@ -219,8 +236,18 @@
 			children = (
 				9A6FFF24283789C5002B0844 /* RelaxView.swift */,
 				9A6FFF4828379F74002B0844 /* RelaxView2.swift */,
+				9A8FA2F4283BC7C000F6DBB8 /* SpringAnim.swift */,
 			);
 			path = RelaxView;
+			sourceTree = "<group>";
+		};
+		9A8FA2FE283E219E00F6DBB8 /* Smart Mode */ = {
+			isa = PBXGroup;
+			children = (
+				9A6FFF20283788E0002B0844 /* SmartView.swift */,
+				9A8FA2FC283E217600F6DBB8 /* SmartInfoView.swift */,
+			);
+			path = "Smart Mode";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,7 +314,9 @@
 				9A6FFF4E2837F09B002B0844 /* quotes.json in Resources */,
 				9A6FFF152837886D002B0844 /* Assets.xcassets in Resources */,
 				9A6FFF3F28378D3E002B0844 /* relax1.mp3 in Resources */,
+				9A8FA2FB283D4A5400F6DBB8 /* marconi.mp3 in Resources */,
 				9A6FFF3D28378D3E002B0844 /* sound1.mp3 in Resources */,
+				9A8FA308283F7F9800F6DBB8 /* spaceVideo.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,7 +332,10 @@
 				9A8FA2F1283A6CE300F6DBB8 /* TestView.swift in Sources */,
 				9A6FFF3128378B82002B0844 /* CirclesAnimationView.swift in Sources */,
 				9A6FFF2928378A55002B0844 /* GradientAnim.swift in Sources */,
+				9A8FA2F7283CC46900F6DBB8 /* FocusInfoView.swift in Sources */,
 				9A6FFF502837F0CF002B0844 /* QuoteService.swift in Sources */,
+				9A8FA2F9283CCB4200F6DBB8 /* BreathInfoView.swift in Sources */,
+				9A8FA2F5283BC7C000F6DBB8 /* SpringAnim.swift in Sources */,
 				9A6FFF4928379F74002B0844 /* RelaxView2.swift in Sources */,
 				9A6FFF21283788E0002B0844 /* SmartView.swift in Sources */,
 				9A6FFF4B2837A58E002B0844 /* HomeFrameView.swift in Sources */,
@@ -311,14 +343,18 @@
 				9A6FFF1F2837888D002B0844 /* HomeView.swift in Sources */,
 				9A6FFF4328379DF0002B0844 /* Extensions.swift in Sources */,
 				9A6FFF3328378BBB002B0844 /* PlayerAudioView.swift in Sources */,
+				9A8FA306283F772900F6DBB8 /* FocusFrameView.swift in Sources */,
+				9A8FA304283F6D3B00F6DBB8 /* BreathFrameView.swift in Sources */,
 				9A6FFF592838FE91002B0844 /* BreathViewModel.swift in Sources */,
 				9A6FFF532838D1DB002B0844 /* BreathView2.swift in Sources */,
+				9A8FA2FD283E217600F6DBB8 /* SmartInfoView.swift in Sources */,
 				9A6FFF25283789C5002B0844 /* RelaxView.swift in Sources */,
 				9A6FFF112837886D002B0844 /* RelaxMaxApp.swift in Sources */,
+				9A8FA302283F6C3F00F6DBB8 /* SmartFrameView.swift in Sources */,
 				9A6FFF2328378915002B0844 /* FocusView.swift in Sources */,
 				9A6FFF3528378C10002B0844 /* TimerService.swift in Sources */,
+				9A02F972283F80DC00C1737D /* VideoPlayer.swift in Sources */,
 				9A6FFF562838F1D6002B0844 /* FlowerView.swift in Sources */,
-				9A6FFF27283789EE002B0844 /* BreathView.swift in Sources */,
 				9A6FFF2B28378A76002B0844 /* FocusViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,6 +487,7 @@
 				DEVELOPMENT_TEAM = 2T8KN29479;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "\"test micro\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -480,6 +517,7 @@
 				DEVELOPMENT_TEAM = 2T8KN29479;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "\"test micro\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

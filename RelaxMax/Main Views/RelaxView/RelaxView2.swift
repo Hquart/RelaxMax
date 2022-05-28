@@ -40,9 +40,9 @@ struct RelaxView2: View {
     var body: some View {
         ZStack{
             
-            GradientAnim(color1: .black, color2: .purple, color3: .purple, color4: .black)
-                            .opacity(0.9)
-                            .ignoresSafeArea()
+//            GradientAnim(color1: .black, color2: .purple, color3: .purple, color4: .black)
+//                            .opacity(0.9)
+//                            .ignoresSafeArea()
             
             Group{
                 

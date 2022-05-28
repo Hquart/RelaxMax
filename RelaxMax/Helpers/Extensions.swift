@@ -44,3 +44,30 @@ extension Animation {
         }
     }
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+extension Binding {
+    func onChange(_ handler: @escaping (Value) -> Void) -> Binding<Value> {
+        Binding(
+            get: { self.wrappedValue },
+            set: { newValue in
+                self.wrappedValue = newValue
+                handler(newValue)
+            }
+        )
+    }
+}
+
+
+extension Color {
+    static let appBlue = Color("appBlue")
+    static let appWhite = Color("appWhite")
+    static let appGray = Color("appGray")
+    static let appDarkGray = Color("appDarkGray")
+    static let appGreen = Color("appGreen")
+    static let appDarkBlue = Color("appDarkBlue")
+    static let appLightBlue = Color("appLightBlue")
+    static let appRed = Color("appRed")
+    static let appOrange = Color("appOrange")
+    static let flowerColor = Color("flowerColor")
+}
+

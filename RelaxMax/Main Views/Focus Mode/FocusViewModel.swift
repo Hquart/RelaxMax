@@ -10,7 +10,7 @@ import Foundation
 class FocusViewViewModel: ObservableObject {
     
     @Published var breakDuration: Double = 900 // in seconds
-    @Published var breakGap: Double = 3600
+    @Published var breakGap: Double = 100
     
     @Published var quoteText: String = """
                     Focus on one task at a time
@@ -20,8 +20,8 @@ class FocusViewViewModel: ObservableObject {
     @Published var breakMessageText: String = """
                     Time to take a break
                     Walk a little,
-                    Get some fresh air,
-                    Drink water...
+                    Get some fresh air, 
+                    Drink water
                     """
     
     
@@ -48,7 +48,16 @@ class FocusViewViewModel: ObservableObject {
         default: self.breakGap = 60 * 60
         }
     }
-    
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+//    func fadeVolumeAndPause(player: AudioPlayer) {
+//        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+//            player.setVolume(T##Float)
+//            if player.volume == 0 {
+//                self.player.stop()
+//                timer.invalidate()
+//            }
+//        }
+//    }
     
 
 }

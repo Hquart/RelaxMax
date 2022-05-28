@@ -10,7 +10,7 @@ import SwiftUI
 struct PlayerAudioView: View {
     
     @Binding var isPlaying: Bool
-     var showNextButton: Bool
+//     var showNextButton: Bool
     @ObservedObject var player: AudioPlayer
     
     var body: some View {
@@ -27,18 +27,18 @@ struct PlayerAudioView: View {
                     .shadow(radius: 3)
                     .padding()
             }
-            if showNextButton {
-            Button(action: {
-                player.nextTrack()
-            }) {
-                Image(systemName: "chevron.right.2").resizable()
-                    .frame(width: 30, height: 30)
-                    .foregroundColor(Color.black).opacity(0.2)
-                    .aspectRatio(contentMode: .fit)
-                    .shadow(radius: 3)
-                    .padding()
-            }
-            }
+//            if showNextButton {
+//            Button(action: {
+//                player.nextTrack()
+//            }) {
+//                Image(systemName: "chevron.right.2").resizable()
+//                    .frame(width: 30, height: 30)
+//                    .foregroundColor(Color.black).opacity(0.2)
+//                    .aspectRatio(contentMode: .fit)
+//                    .shadow(radius: 3)
+//                    .padding()
+//            }
+//            }
         }.opacity(0.5)
     }
 }

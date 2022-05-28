@@ -11,7 +11,7 @@ import SwiftUI
 struct RelaxMaxApp: App {
     var body: some Scene {
         WindowGroup {
-          BreathView2()
+          HomeView()
         }
     }
 }
