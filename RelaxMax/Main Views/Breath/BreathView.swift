@@ -21,7 +21,9 @@ struct BreathView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @ObservedObject var chimeSound = AudioPlayer(name: "bell", type: "wav", volume: 0.5, fadeDuration: 5.0)
+    @ObservedObject var inhalePlayer = AudioPlayer(name: "inhale", type: "mp3", volume: 0.5, fadeDuration: 5.0, loops: 0)
+    @ObservedObject var exhalePlayer = AudioPlayer(name: "exhale", type: "mp3", volume: 0.5, fadeDuration: 5.0, loops: 0)
+    @ObservedObject var completionPlayer = AudioPlayer(name: "breathReward", type: "mp3", volume: 0.5, fadeDuration: 5.0, loops: 0)
     
     let generator = UINotificationFeedbackGenerator()
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -38,6 +40,7 @@ struct BreathView: View {
             VStack {
                 FlowerView(animFlower: $isBreathing)
                     .padding(.bottom, 100)
+                if breathingCompleted == false {
                 Menu {
                     ForEach(0..<4, id: \.self) { index in
                         Button(vm.breathDurationOptions[index], action: { vm.setBreathDuration(index: index)})
@@ -54,12 +57,13 @@ struct BreathView: View {
                     }
                 }
                     .padding()
+               
                     actionButton
-                
+                }
                              
                 if breathingCompleted {
-                    quote
-                        .padding(.top, 50)
+                    quote.padding(.top, 50)
+                       
                 }
             }
         }
@@ -69,61 +73,102 @@ struct BreathView: View {
             BreathInfoView()
         }
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            isBreathing = false
+            inhalePlayer.stopAudio()
+            exhalePlayer.stopAudio()
+            completionPlayer.stopAudio()
+        }
     }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ///------------FUNCTIONS------------------
     ////////////////////////////////////////////////////////////////////////////////////////////////
     func startBreathing() {
+       
         stopButtonWasPressed = false
+        quoteService.getNewQuote()
+        
         withAnimation(Animation.easeOut(duration: 1)) {
         breathingCompleted = false
         }
-        quoteService.getNewQuote()
-        withAnimation(.linear(duration: 2.0)) {
-        isBreathing = true
-            if stopButtonWasPressed == false {
-        soundAndVibrate()
-            }
-        }
+      
         var count: Int = 1
+        
+        withAnimation(.linear(duration: 2.0)) {
+            isBreathing = true
+            inhale()
+        }
        
         print("breath Count: \(count) / \(vm.breathCount)")
+        
         Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
-            count += 1
-            if isBreathing && stopButtonWasPressed == false {
-            soundAndVibrate()
-            }
-            print("breath Count: \(count) / \(vm.breathCount)")
-            if isBreathing == false || count == vm.breathCount {
-                chimeSound.stopAudio()
-                isBreathing = false
-                if    stopButtonWasPressed == false {
-                soundAndVibrate()
-                }
+            if stopButtonWasPressed {
                 timer.invalidate()
+            }
+            if stopButtonWasPressed == false {
+            count += 1
+//                if isBreathing {
+                    
+               
+            if count % 2 == 0 {
+                exhale()
+            } else if count % 2 != 0 {
+                inhale()
+            }
+//                }
+                
+            print("breath Count: \(count) / \(vm.breathCount)")
+                
+            if isBreathing == false || count == vm.breathCount || stopButtonWasPressed {
+                inhalePlayer.stopAudio()
+                exhalePlayer.stopAudio()
+                isBreathing = false
+                if stopButtonWasPressed == false {
+                timer.invalidate()
+                }
             }
             if count == vm.breathCount && stopButtonWasPressed == false {
                 withAnimation(.linear(duration: 1)) {
+                    exhale()
                     breathingCompleted = true
+                    completionPlayer.fadeIn()
+                isBreathing = false
                 }
             }
         }
+    }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
     func stopButtonPressed() {
         stopButtonWasPressed = true
-        chimeSound.stopAudio()
+        inhalePlayer.stopAudio()
+        exhalePlayer.stopAudio()
+        completionPlayer.stopAudio()
         isBreathing = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
             stopButtonWasPressed = false
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    func soundAndVibrate()  {
-        chimeSound.playAudio()
+//    func soundAndVibrate(count: Int)  {
+//
+//        if count % 2 == 0 {
+//        exhalePlayer.playAudio()
+//        } else {
+//            inhalePlayer.playAudio()
+//        }
+//        self.generator.notificationOccurred(.error)
+//    }
+    func exhale() {
+        exhalePlayer.playAudio()
         self.generator.notificationOccurred(.error)
     }
+    func inhale() {
+        self.generator.notificationOccurred(.error)
+        inhalePlayer.playAudio()
+    }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -143,7 +188,6 @@ extension BreathView {
 ////////////////////////////////////////////////////////////////////////////////////////////////
     private var quote: some View {
         Text(quoteService.current)
-       
             .italic().bold()
             .multilineTextAlignment(.center)
             .font(.title).scaleEffect(1)
@@ -169,7 +213,9 @@ extension BreathView {
 ////////////////////////////////////////////////////////////////////////////////////////////////
     private var backButton: some View {
         Button(action: {
-            chimeSound.stopAudio()
+            inhalePlayer.stopAudio()
+            exhalePlayer.stopAudio()
+            completionPlayer.stopAudio()
             isBreathing = false
          
             self.presentationMode.wrappedValue.dismiss()

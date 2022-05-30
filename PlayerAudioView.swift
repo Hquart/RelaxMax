@@ -48,3 +48,27 @@ struct PlayerAudioView: View {
 //        PlayerAudioView(isPlaying: .constant(false), showNextButton: false, player: <#AudioPlayer#>)
 //    }
 //}
+
+
+struct MuteAudioView: View {
+    
+    @Binding var isPlaying: Bool
+    @ObservedObject var player: AudioPlayer
+    
+    var body: some View {
+        HStack(spacing: 30) {
+            Button(action: {
+                isPlaying ? player.muteAudio() : player.unMuteAudio()
+                isPlaying.toggle()
+            }) {
+                Image(systemName: isPlaying ? "speaker.wave.3" : "speaker")
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .foregroundColor(Color.black).opacity(0.5)
+                    .aspectRatio(contentMode: .fit)
+                    .shadow(radius: 3)
+                    .padding()
+            }
+        }.opacity(0.4)
+    }
+}

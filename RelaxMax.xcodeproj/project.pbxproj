@@ -34,6 +34,10 @@
 		9A6FFF532838D1DB002B0844 /* BreathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF522838D1DB002B0844 /* BreathView.swift */; };
 		9A6FFF562838F1D6002B0844 /* FlowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF552838F1D6002B0844 /* FlowerView.swift */; };
 		9A6FFF592838FE91002B0844 /* BreathViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FFF582838FE91002B0844 /* BreathViewModel.swift */; };
+		9A75F0F3284381C700A3096B /* exhale.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9A75F0F2284381C700A3096B /* exhale.mp3 */; };
+		9A75F0F5284381DB00A3096B /* inhale.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9A75F0F4284381DB00A3096B /* inhale.mp3 */; };
+		9A75F0F72843924A00A3096B /* Breath.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9A75F0F62843924A00A3096B /* Breath.mp3 */; };
+		9A75F0F92843A5A500A3096B /* breathReward.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9A75F0F82843A5A500A3096B /* breathReward.mp3 */; };
 		9A8FA2EF283A65D100F6DBB8 /* bell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9A8FA2EE283A65D100F6DBB8 /* bell.wav */; };
 		9A8FA2F1283A6CE300F6DBB8 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8FA2F0283A6CE300F6DBB8 /* TestView.swift */; };
 		9A8FA2F5283BC7C000F6DBB8 /* SpringAnim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8FA2F4283BC7C000F6DBB8 /* SpringAnim.swift */; };
@@ -76,6 +80,10 @@
 		9A6FFF522838D1DB002B0844 /* BreathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathView.swift; sourceTree = "<group>"; };
 		9A6FFF552838F1D6002B0844 /* FlowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerView.swift; sourceTree = "<group>"; };
 		9A6FFF582838FE91002B0844 /* BreathViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathViewModel.swift; sourceTree = "<group>"; };
+		9A75F0F2284381C700A3096B /* exhale.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = exhale.mp3; sourceTree = "<group>"; };
+		9A75F0F4284381DB00A3096B /* inhale.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = inhale.mp3; sourceTree = "<group>"; };
+		9A75F0F62843924A00A3096B /* Breath.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Breath.mp3; sourceTree = "<group>"; };
+		9A75F0F82843A5A500A3096B /* breathReward.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = breathReward.mp3; sourceTree = "<group>"; };
 		9A8FA2EE283A65D100F6DBB8 /* bell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell.wav; sourceTree = "<group>"; };
 		9A8FA2F0283A6CE300F6DBB8 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		9A8FA2F4283BC7C000F6DBB8 /* SpringAnim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringAnim.swift; sourceTree = "<group>"; };
@@ -145,8 +153,12 @@
 			children = (
 				9A6FFF4D2837F09B002B0844 /* quotes.json */,
 				9A6FFF3C28378D3E002B0844 /* relax1.mp3 */,
+				9A75F0F82843A5A500A3096B /* breathReward.mp3 */,
+				9A75F0F62843924A00A3096B /* Breath.mp3 */,
 				9A8FA2FA283D4A5400F6DBB8 /* marconi.mp3 */,
 				9A6FFF3A28378D3E002B0844 /* sound1.mp3 */,
+				9A75F0F4284381DB00A3096B /* inhale.mp3 */,
+				9A75F0F2284381C700A3096B /* exhale.mp3 */,
 				9A8FA2EE283A65D100F6DBB8 /* bell.wav */,
 				9A6FFF3B28378D3E002B0844 /* sound2.mp3 */,
 				9A8FA307283F7F9800F6DBB8 /* spaceVideo.mov */,
@@ -314,7 +326,11 @@
 				9A6FFF4E2837F09B002B0844 /* quotes.json in Resources */,
 				9A6FFF152837886D002B0844 /* Assets.xcassets in Resources */,
 				9A6FFF3F28378D3E002B0844 /* relax1.mp3 in Resources */,
+				9A75F0F72843924A00A3096B /* Breath.mp3 in Resources */,
+				9A75F0F5284381DB00A3096B /* inhale.mp3 in Resources */,
 				9A8FA2FB283D4A5400F6DBB8 /* marconi.mp3 in Resources */,
+				9A75F0F3284381C700A3096B /* exhale.mp3 in Resources */,
+				9A75F0F92843A5A500A3096B /* breathReward.mp3 in Resources */,
 				9A6FFF3D28378D3E002B0844 /* sound1.mp3 in Resources */,
 				9A8FA308283F7F9800F6DBB8 /* spaceVideo.mov in Resources */,
 			);

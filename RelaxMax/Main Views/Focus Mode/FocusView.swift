@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFAudio
 
 struct FocusView: View {
     
@@ -13,20 +14,19 @@ struct FocusView: View {
     @ObservedObject var quoteService = QuoteService()
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
-    @ObservedObject var whiteNoisePlayer = AudioPlayer(name: "sound2", type: "mp3", volume:1, fadeDuration: 0.0)
-    @ObservedObject var breakMusicPlayer = AudioPlayer(name: "marconi", type: "mp3", volume: 1, fadeDuration: 5.0)
+    
+    @ObservedObject var whiteNoisePlayer = AudioPlayer(name: "sound2", type: "mp3", volume: 0, fadeDuration: 10.0, loops: -1)
+    @ObservedObject var breakMusicPlayer = AudioPlayer(name: "marconi", type: "mp3", volume: 1, fadeDuration: 5.0, loops: -1)
     
     @State private var showHello: Bool = false
     @State private var showQuote: Bool = false
     
     @State private var isWorking: Bool = false
-    @State private var showBreakMessage: Bool = false
+    @State private var isInBreak: Bool = false
     @State private var showInfo: Bool = false
+    @State private var userHasQuit: Bool = false
     
     @State private var isPlaying: Bool = false
-    @State private var showNoisePlayer: Bool = false
-    @State private var showBreakMusicPlayer: Bool = false
     
     @State private var showStartMode: Bool = false
     @State private var progress: Double = 0
@@ -35,18 +35,18 @@ struct FocusView: View {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     var body: some View {
         GeometryReader { geo in
-//            ZStack {
-                ZStack {
-                    Image("forest4")
-                     
-                        .resizable()
-                        .opacity(0.5)
-                        .ignoresSafeArea()
-                    
-                    GradientAnim(color1: .blue, color2: .orange, color3: .green, color4: .blue, animDuration: 20)
-                        .opacity(0.5)
-                        .ignoresSafeArea()
-
+            //            ZStack {
+            ZStack {
+                Image("forest3")
+                
+                    .resizable()
+                    .opacity(0.5)
+                    .ignoresSafeArea()
+                
+                GradientAnim(color1: .blue, color2: .orange, color3: .green, color4: .blue, animDuration: vm.breakGap)
+                    .opacity(0.5)
+                    .ignoresSafeArea()
+                
                 ////////////////////////////////////////////////////////////////////////////////////////////////
                 VStack {
                     Spacer()
@@ -99,45 +99,48 @@ struct FocusView: View {
                                     }
                                 }
                                 //////////////////////////////////////////  START BUTTON   ///////////////////////////////////////
+                         
                                 Button(action: { startFocusMode(breakGap: vm.breakGap, breakDuration: vm.breakDuration) }) {
                                     startButton
                                         .padding(.top)
                                 }
                             }
                         }
-                        if showNoisePlayer {
-                            PlayerAudioView(isPlaying: $isPlaying, player: whiteNoisePlayer)
-                        } else if showBreakMusicPlayer {
-                            PlayerAudioView(isPlaying: $isPlaying, player: breakMusicPlayer)
+                        if  isWorking && whiteNoisePlayer.isPlayingAudio() && whiteNoisePlayer.fadeInAccomplished() {
+                            MuteAudioView(isPlaying: $isPlaying, player: whiteNoisePlayer)
+                        } else if isInBreak && breakMusicPlayer.isPlayingAudio() && breakMusicPlayer.fadeInAccomplished() {
+                            MuteAudioView(isPlaying: $isPlaying, player: breakMusicPlayer)
                         }
                     }
                     ////////////////////////////////////////////////////////////////////////////////////////////////
-                    if showBreakMessage {
+                    if isInBreak {
                         breakMessage
                     }
                     ////////////////////////////////////////////////////////////////////////////////////////////////
                     Spacer()
-            }
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading: backButton)
-            .navigationBarItems(trailing: infoButton)
+                }
+                .navigationBarBackButtonHidden(true)
+                .navigationBarItems(leading: backButton)
+                .navigationBarItems(trailing: infoButton)
                 
-            .sheet(isPresented: $showInfo) {
-                FocusInfoView()
+                .sheet(isPresented: $showInfo) {
+                    FocusInfoView()
+                }
+                .onAppear {
+                    resetView()
+                    userHasQuit = false
+                    welcome()
+                }
+                .onChange(of: vm.breakGap) { newValue in
+                    withAnimation(.linear(duration: newValue)) {
+                        self.progress = 1.0
+                    }
+                }
             }
-            .onAppear {
-                resetView()
-                welcome()
-            }
-            .onChange(of: vm.breakGap) { newValue in
-                withAnimation(.linear(duration: newValue)) {
-                                            self.progress = 1.0
-                                        }
-                                                      }
         }
     }
-    }
     func resetView() {
+        userHasQuit = true
         isWorking = false
         whiteNoisePlayer.stopAudio()
         breakMusicPlayer.stopAudio()
@@ -168,40 +171,46 @@ struct FocusView: View {
         let focusStartTime: DispatchTime = .now()
         isWorking = true
         if isWorking {
-        DispatchQueue.main.asyncAfter(deadline: focusStartTime + 0.5) {
-            withAnimation(Animation.easeOut(duration: 1)) {
-                showBreakMusicPlayer = false
-                showBreakMessage = false
-                breakMusicPlayer.pauseAudio()
-                whiteNoisePlayer.playAudio()
-                isPlaying = true
-                showNoisePlayer = true
-                showStartMode = false
-                showQuote = false
-            }
-        }
-            DispatchQueue.main.asyncAfter(deadline: .now() + breakGap) {
+            DispatchQueue.main.asyncAfter(deadline: focusStartTime + 0.5) {
                 withAnimation(Animation.easeOut(duration: 3)) {
-                   startBreakTime()
+                    isInBreak = false
+                    breakMusicPlayer.fadeOut()
+                    whiteNoisePlayer.fadeIn()
+                    isPlaying = true
+                    showStartMode = false
+                    showQuote = false
+                }
+            }
+            
+//            DispatchQueue.main.asyncAfter(deadline: focusStartTime + 11.0) {
+//                withAnimation(Animation.easeOut(duration: 1)) {
+//                showMuteButton = true
+//                }
+//            }
+            
+            DispatchQueue.main.asyncAfter(deadline: focusStartTime + breakGap) {
+                withAnimation(Animation.easeOut(duration: 3)) {
+                    startBreakTime()
                 }
             }
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
     func startBreakTime() {
-        breakMusicPlayer.playAudio()
-        whiteNoisePlayer.pauseAudio()
-        showNoisePlayer = false
-        breakMusicPlayer.playAudio()
-        showBreakMusicPlayer = true
-        showBreakMessage = true
-
+        isWorking = false
+        isInBreak = true
+        whiteNoisePlayer.fadeOut()
+        breakMusicPlayer.fadeIn()
+        
+        if isInBreak && userHasQuit == false {
         DispatchQueue.main.asyncAfter(deadline: .now() + vm.breakDuration) {
             withAnimation(Animation.easeOut(duration: 3)) {
                 startFocusMode(breakGap: vm.breakGap, breakDuration: vm.breakDuration)
             }
         }
     }
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ///------------VIEW  EXTENSION --------
@@ -228,15 +237,13 @@ extension FocusView {
     private var backButton: some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
-            isWorking = false
-            whiteNoisePlayer.stopAudio()
-            breakMusicPlayer.stopAudio()
+            resetView()
         }) {
-                Image(systemName: "chevron.backward.circle")
+            Image(systemName: "chevron.backward.circle")
                 .opacity(isWorking ? 0.2 : 0.8)
-                    .foregroundColor(Color.white)
-                    .scaleEffect(1.4)
-                    .padding()
+                .foregroundColor(Color.white)
+                .scaleEffect(1.4)
+                .padding()
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -244,25 +251,25 @@ extension FocusView {
         Button(action: {
             showInfo.toggle()
         }) {
-                Image(systemName: "info.circle")
+            Image(systemName: "info.circle")
                 .opacity(isWorking ? 0.2 : 0.8)
-                    .foregroundColor(Color.white)
-                    .scaleEffect(1.4)
-                    .padding()
+                .foregroundColor(Color.white)
+                .scaleEffect(1.4)
+                .padding()
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
-//    private var timer: some View {
-//        Text(String(format: "%.1f", focusTimer.secondsElapsed))
-//            .font(.custom("Avenir", size: 40))
-//            .padding(.top, 200)
-//            .padding(.bottom, 100)
-//    }
+    //    private var timer: some View {
+    //        Text(String(format: "%.1f", focusTimer.secondsElapsed))
+    //            .font(.custom("Avenir", size: 40))
+    //            .padding(.top, 200)
+    //            .padding(.bottom, 100)
+    //    }
     ////////////////////////////////////////////////////////////////////////////////////////////////
     private var startButton: some View {
         Text("Start")
             .font(.headline)
-            
+        
             .foregroundColor(.white).scaleEffect(1.2)
             .padding(.vertical, 15)
             .padding(.horizontal, 75)
@@ -280,7 +287,8 @@ extension FocusView {
             .padding()
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    private var breakPickers: some View {
+    private var breakDurationButton: some View {
+        GeometryReader { geo in
         HStack {
             Menu {
                 ForEach(0..<4, id: \.self) { index in
@@ -290,14 +298,18 @@ extension FocusView {
                 ZStack {
                     RoundedRectangle(cornerRadius: 40)
                         .fill(.blue)
-                        .frame(width: 70, height: 30, alignment: .top)
+                        .frame(width: geo.size.width * 0.2, height: geo.size.height * 0.05, alignment: .top)
                     Text(String(Int(vm.breakDuration / 60)) + " mn")
                         .font(.headline)
                         .foregroundColor(Color.white)
                 }
-            } ////////////////////////////////////////////////////////////////////////////////////////////////
-            Text(" break every ").foregroundColor(Color.white)
+            }
+        }
+    }
+    }
             ////////////////////////////////////////////////////////////////////////////////////////////////
+    private var breakGapButton: some View {
+        GeometryReader { geo in
             Menu {
                 ForEach(0..<4, id: \.self) { index in
                     Button(vm.breakGapOptions[index], action: { vm.setBreakGap(index: index)})
@@ -306,14 +318,14 @@ extension FocusView {
                 ZStack {
                     RoundedRectangle(cornerRadius: 40)
                         .fill(.blue)
-                        .frame(width: 70, height: 30, alignment: .top)
+                        .frame(width: geo.size.width * 0.2, height: geo.size.height * 0.05, alignment: .top)
                     Text(String(Int(vm.breakGap / 60)) + "  mn")
                         .font(.headline)
                         .foregroundColor(Color.white)
                 }
             }
         }
-    }
+}
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // ---------- PREVIEW ----------------

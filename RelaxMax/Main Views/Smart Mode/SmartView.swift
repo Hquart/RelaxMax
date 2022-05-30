@@ -24,7 +24,7 @@ struct SmartView: View {
     @State private var isPlaying: Bool = false
     @State private var showInfo: Bool = false
     
-    @ObservedObject var musicPlayer = AudioPlayer(name: "sound1", type: "mp3", volume: 1, fadeDuration: 5.0)
+    @ObservedObject var musicPlayer = AudioPlayer(name: "sound1", type: "mp3", volume: 1, fadeDuration: 5.0, loops: 0)
     
     var body: some View {
         NavigationView {

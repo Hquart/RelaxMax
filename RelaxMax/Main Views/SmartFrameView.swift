@@ -16,7 +16,7 @@ struct SmartFrameView: View {
     @State private var progress: CGFloat = 0.0
     @State private var isGlowing: Bool = false
     @State private var isPlaying: Bool = false
-    @ObservedObject var musicPlayer = AudioPlayer(name: "marconi", type: "mp3", volume: 1, fadeDuration: 5.0)
+    @ObservedObject var musicPlayer = AudioPlayer(name: "marconi", type: "mp3", volume: 1, fadeDuration: 5.0, loops: 0)
 
     let gradientOne = Gradient(colors: [.blue, .appDarkBlue])
     let gradientTwo = Gradient(colors: [.appDarkBlue, .blue])
