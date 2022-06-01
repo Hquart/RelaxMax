@@ -23,10 +23,11 @@ struct FlowerView: View {
             Petal(animate: $animFlower,
                   rotationIn: 50, rotationOut: 10)
         }
-        .scaleEffect(2.1)
+        .scaleEffect(1.2)
         .shadow(color: .blue, radius: animFlower ? 100 : 0)
-        .hueRotation(Angle(degrees: animFlower ? 0 : 90))
+//        .hueRotation(Angle(degrees: animFlower ? 0 : 90))
         .animation(Animation.easeInOut(duration: 5.0)
+                   
             .repeat(while: animFlower, autoreverses: true), value: animFlower)
     }
 }

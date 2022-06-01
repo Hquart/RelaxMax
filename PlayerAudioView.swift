@@ -22,7 +22,7 @@ struct PlayerAudioView: View {
                 Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
                     .resizable()
                     .frame(width: 50, height: 50)
-                    .foregroundColor(Color.black).opacity(0.2)
+                    .foregroundColor(Color.white).opacity(0.2)
                     .aspectRatio(contentMode: .fit)
                     .shadow(radius: 3)
                     .padding()

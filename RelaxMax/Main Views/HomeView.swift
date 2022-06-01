@@ -38,7 +38,7 @@ struct HomeView: View {
                                
                             
                         }
-                        NavigationLink(destination: BreathView()) {
+                        NavigationLink(destination: BreathView2()) {
                             BreathFrameView(frameHeight: 6)
                               
                         }

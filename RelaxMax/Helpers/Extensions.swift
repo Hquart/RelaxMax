@@ -69,5 +69,10 @@ extension Color {
     static let appRed = Color("appRed")
     static let appOrange = Color("appOrange")
     static let flowerColor = Color("flowerColor")
+    
+    
+    static let breathGreen1 = Color("breathGreen1")
+    static let breathGreen2 = Color("breathGreen2")
+    
 }
 
