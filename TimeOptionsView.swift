@@ -1,9 +1,10 @@
 //
-//  TimeOptionsPicker.swift
+//  TimeOptionsView.swift
 //  RelaxMax
 //
-//  Created by Naji Achkar on 31/05/2022.
+//  Created by Naji Achkar on 01/06/2022.
 //
+
 
 import SwiftUI
 import CollectionViewPagingLayout

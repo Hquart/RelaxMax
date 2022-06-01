@@ -9,71 +9,70 @@ import SwiftUI
 import CoreHaptics
 import CollectionViewPagingLayout
 
-struct BreathView: View {
-    
+struct BreathView2: View {
+
     @State private var selection: UUID?
-    @State private var breathCount: Int = 10
+    @State private var breathTime: Int = 10
     
-   var breathDurationOptions = [OptionItem(minutes: 1),
+    @State private var timeRemaining: String = ""
+    
+   var breathDurationOptions = [OptionItem(minutes: 0),
+                                OptionItem(minutes: 1),
                                 OptionItem(minutes: 2),
                                 OptionItem(minutes: 3),
                                 OptionItem(minutes: 4),
-                                OptionItem(minutes: 5),
-                                OptionItem(minutes: 0)]
+                                OptionItem(minutes: 5)]
     
     @ObservedObject var quoteService = QuoteService()
-    
+
     @State private var isBreathing: Bool = false
     @State private var breathingCompleted: Bool = false
     @State private var showInfo: Bool = false
     @State private var stopButtonWasPressed = false
-    
-    @State var scale: CGFloat = 1.0
-    
+
+    @State private var index: Int = 2
+
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
-    @ObservedObject var breathPlayer = AudioPlayer(name: "Breath", type: "mp3", volume: 0.5, fadeDuration: 5.0, loops: 0)
-    @ObservedObject var inhalePlayer = AudioPlayer(name: "inhale", type: "mp3", volume: 0.5, fadeDuration: 5.0, loops: 0)
-    @ObservedObject var exhalePlayer = AudioPlayer(name: "exhale", type: "mp3", volume: 0.5, fadeDuration: 5.0, loops: 0)
-    @ObservedObject var completionPlayer = AudioPlayer(name: "breathReward", type: "mp3", volume: 0.5, fadeDuration: 5.0, loops: 0)
-    
+
+    @ObservedObject var breathPlayer = AudioPlayer(name: "Breath", type: "mp3", volume: 0.5, fadeDuration: 5.0, loops: -1)
+    @ObservedObject var completionPlayer = AudioPlayer(name: "breathReward", type: "mp3", volume: 0.5, fadeDuration: 5.0, loops: -1)
+
     let generator = UINotificationFeedbackGenerator()
+    
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ///------------ BODY ------------------
     ////////////////////////////////////////////////////////////////////////////////////////////////
     var body: some View {
         GeometryReader { geo in
         ZStack {
-            GradientAnim(color1: .breathGreen1, color2: .breathGreen1, color3: .white, color4: .black, animDuration: 5)
+            GradientAnim(color1: .breathGreen1, color2: .breathGreen1, color3: .breathGreen1, color4: .breathGreen1, animDuration: 5)
                 .opacity(0.5)
                 .ignoresSafeArea()
             ////////////////////////////////////////////////////////////////////////////////////////////////
             VStack {
                 Spacer(minLength: geo.size.height * 0.35)
                 ////////////////////////////////////////////////////////////////////////////////////////////////
-                if breathingCompleted {
-                    quote
-                } else {
                 FlowerView(animFlower: $isBreathing)
                     .padding(.bottom, 100)
                     .shadow(radius: 2)
-                }
+                    .opacity(breathingCompleted ? 0.5 : 0.9)
+                       if breathingCompleted {
+                           quote
+                       }
                 ////////////////////////////////////////////////////////////////////////////////////////////////
                 Spacer()
                 ////////////////////////////////////////////////////////////////////////////////////////////////
 
                 ////////////////////////////////////////////////////////////////////////////////////////////////
+                if !isBreathing  && !breathingCompleted  {
                 TimeOptionsView(items: breathDurationOptions, selection: self.$selection)
-                Button("Test Selection") {
-                    print("\(self.breathCount)")
                 }
                 ////////////////////////////////////////////////////////////////////////////////////////////////
-                if breathingCompleted == false {
                     playButton
                         .disabled(breathingCompleted)
                         .opacity(breathingCompleted ? 0.0 : 1.0)
-                }
                 Spacer()
+                
             }
         }
         .navigationBarItems(leading: backButton)
@@ -82,69 +81,60 @@ struct BreathView: View {
             BreathInfoView()
         }
         .navigationBarBackButtonHidden(true)
-        .onAppear {
-            isBreathing = false
-            inhalePlayer.stopAudio()
-            exhalePlayer.stopAudio()
-            completionPlayer.stopAudio()
-        }
         .onChange(of: self.selection) { newValue in
-            if let index = breathDurationOptions.firstIndex(where: { $0.id == newValue }) {
-                self.breathCount = self.breathDurationOptions[index].minutes * 6
+            if let index = breathDurationOptions.firstIndex(where: { $0.id == newValue  }) {
+                if index == 0 {
+                    self.breathTime = 10
+                } else {
+                self.breathTime = self.breathDurationOptions[index].minutes * 60
+            }
             }
         }
-    }
+        .onAppear {
+            quoteService.getNewQuote()
+            isBreathing = false
+            completionPlayer.stopAudio()
+        }
+        }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ///------------FUNCTIONS------------------
     ////////////////////////////////////////////////////////////////////////////////////////////////
     func startBreathing() {
-       
         stopButtonWasPressed = false
-        quoteService.getNewQuote()
+        breathingCompleted = false
         isBreathing = true
-        inhale()
-        var count: Int = 1
-        print("breath Count: \(count) / \(breathCount)")
-    
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
-            if stopButtonWasPressed {
-                timer.invalidate()
-            } else {
+        breathPlayer.playAudio()
+        var count: Int = 0
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             count += 1
-                
-            if count % 2 == 0 {
-                exhale()
-            } else if count % 2 != 0 {
-                inhale()
-            }
-                
-            print("breath Count: \(count) / \(breathCount)")
-                
-            if isBreathing == false || count == breathCount || stopButtonWasPressed {
-                inhalePlayer.stopAudio()
-                exhalePlayer.stopAudio()
-                isBreathing = false
-                if stopButtonWasPressed == false {
+            print("\(count)")
+            
+            if count == breathTime || stopButtonWasPressed {
                 timer.invalidate()
-                }
+                isBreathing = false
             }
-            if count == breathCount && stopButtonWasPressed == false {
-                withAnimation(.linear(duration: 1)) {
-                    exhale()
+            if count % 10 == 0 {
+                breathPlayer.playAudio()
+                self.generator.notificationOccurred(.error)
+            }
+            if count % 5 == 0 {
+                self.generator.notificationOccurred(.error)
+            }
+            if count == breathTime && stopButtonWasPressed == false {
+                withAnimation(.linear(duration: 3)) {
+                    breathPlayer.stopAudio()
                     breathingCompleted = true
                     completionPlayer.fadeIn()
-                isBreathing = false
+                    isBreathing = false
                 }
-            }
         }
-    }
+        }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
     func stopButtonPressed() {
         stopButtonWasPressed = true
-        inhalePlayer.stopAudio()
-        exhalePlayer.stopAudio()
+        breathPlayer.fadeOut()
         completionPlayer.stopAudio()
         isBreathing = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
@@ -152,25 +142,16 @@ struct BreathView: View {
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    func exhale() {
-        exhalePlayer.playAudio()
+    func breath() {
+       
         self.generator.notificationOccurred(.error)
     }
-    func inhale() {
-        self.generator.notificationOccurred(.error)
-        inhalePlayer.playAudio()
-    }
-    
-//    func breath() {
-//        breathPlayer.playAudio()
-//        self.generator.notificationOccurred(.error)
-//    }
 ////////////////////////////////////////////////////////////////////////////////////////////////
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ///------------ VIEW EXTENSION ------------------
 ////////////////////////////////////////////////////////////////////////////////////////////////
-extension BreathView {
+extension BreathView2 {
 ////////////////////////////////////////////////////////////////////////////////////////////////
     private var breathInfo: some View {
         Text("Test")
@@ -194,7 +175,7 @@ extension BreathView {
 ////////////////////////////////////////////////////////////////////////////////////////////////
     private var actionButton: some View {
         Button(action: { isBreathing ? stopButtonPressed() : startBreathing() }) {
-            
+
             Text(isBreathing ? "End Session" : "Start")
                     .font(.headline)
                     .foregroundColor(isBreathing ? .white : .appDarkBlue).scaleEffect(1.2)
@@ -225,11 +206,9 @@ extension BreathView {
 ////////////////////////////////////////////////////////////////////////////////////////////////
     private var backButton: some View {
         Button(action: {
-            inhalePlayer.stopAudio()
-            exhalePlayer.stopAudio()
             completionPlayer.stopAudio()
             isBreathing = false
-         
+
             self.presentationMode.wrappedValue.dismiss()
         }) {
             Image(systemName: "chevron.backward.circle")
@@ -238,7 +217,7 @@ extension BreathView {
                 .animation(.linear(duration: 1.5), value: isBreathing)
                 .foregroundColor(Color.white)
                 .scaleEffect(1.2)
-               
+
                 .padding()
         }
     }
@@ -259,11 +238,17 @@ private var infoButton: some View {
 
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
+struct OptionItem: Identifiable {
+                     var id: UUID = .init()
+                     let minutes: Int
+                 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 ///------------ PREVIEW ------------------
 ////////////////////////////////////////////////////////////////////////////////////////////////
-struct BreathView_Previews: PreviewProvider {
+struct BreathView2_Previews: PreviewProvider {
     static var previews: some View {
-        BreathView()
+        BreathView2()
             .previewDevice("iPhone 13")
     }
 }

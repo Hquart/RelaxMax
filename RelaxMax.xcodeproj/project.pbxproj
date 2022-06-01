@@ -49,6 +49,8 @@
 		9A8FA304283F6D3B00F6DBB8 /* BreathFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8FA303283F6D3B00F6DBB8 /* BreathFrameView.swift */; };
 		9A8FA306283F772900F6DBB8 /* FocusFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8FA305283F772900F6DBB8 /* FocusFrameView.swift */; };
 		9A8FA308283F7F9800F6DBB8 /* spaceVideo.mov in Resources */ = {isa = PBXBuildFile; fileRef = 9A8FA307283F7F9800F6DBB8 /* spaceVideo.mov */; };
+		9A9ED4F6284768ED00D2486E /* CollectionViewPagingLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9A9ED4F5284768ED00D2486E /* CollectionViewPagingLayout */; };
+		9A9ED4FA28476CFD00D2486E /* TimeOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9ED4F928476CFD00D2486E /* TimeOptionsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +97,7 @@
 		9A8FA303283F6D3B00F6DBB8 /* BreathFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BreathFrameView.swift; path = "RelaxMax/Main Views/BreathFrameView.swift"; sourceTree = SOURCE_ROOT; };
 		9A8FA305283F772900F6DBB8 /* FocusFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusFrameView.swift; sourceTree = "<group>"; };
 		9A8FA307283F7F9800F6DBB8 /* spaceVideo.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = spaceVideo.mov; sourceTree = "<group>"; };
+		9A9ED4F928476CFD00D2486E /* TimeOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOptionsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A9ED4F6284768ED00D2486E /* CollectionViewPagingLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +193,7 @@
 				9A6FFF2828378A55002B0844 /* GradientAnim.swift */,
 				9A6FFF3228378BBB002B0844 /* PlayerAudioView.swift */,
 				9A6FFF3628378C3B002B0844 /* CircleModel.swift */,
+				9A9ED4F928476CFD00D2486E /* TimeOptionsView.swift */,
 				9A6FFF3028378B82002B0844 /* CirclesAnimationView.swift */,
 				9A8FA2F0283A6CE300F6DBB8 /* TestView.swift */,
 			);
@@ -278,6 +283,9 @@
 			dependencies = (
 			);
 			name = RelaxMax;
+			packageProductDependencies = (
+				9A9ED4F5284768ED00D2486E /* CollectionViewPagingLayout */,
+			);
 			productName = RelaxMax;
 			productReference = 9A6FFF0D2837886D002B0844 /* RelaxMax.app */;
 			productType = "com.apple.product-type.application";
@@ -306,6 +314,9 @@
 				Base,
 			);
 			mainGroup = 9A6FFF042837886D002B0844;
+			packageReferences = (
+				9A9ED4F4284768ED00D2486E /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */,
+			);
 			productRefGroup = 9A6FFF0E2837886D002B0844 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -359,6 +370,7 @@
 				9A6FFF1F2837888D002B0844 /* HomeView.swift in Sources */,
 				9A6FFF4328379DF0002B0844 /* Extensions.swift in Sources */,
 				9A6FFF3328378BBB002B0844 /* PlayerAudioView.swift in Sources */,
+				9A9ED4FA28476CFD00D2486E /* TimeOptionsView.swift in Sources */,
 				9A8FA306283F772900F6DBB8 /* FocusFrameView.swift in Sources */,
 				9A8FA304283F6D3B00F6DBB8 /* BreathFrameView.swift in Sources */,
 				9A6FFF592838FE91002B0844 /* BreathViewModel.swift in Sources */,
@@ -574,6 +586,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9A9ED4F4284768ED00D2486E /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/amirdew/CollectionViewPagingLayout";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9A9ED4F5284768ED00D2486E /* CollectionViewPagingLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A9ED4F4284768ED00D2486E /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */;
+			productName = CollectionViewPagingLayout;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9A6FFF052837886D002B0844 /* Project object */;
 }
