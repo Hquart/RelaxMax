@@ -14,8 +14,6 @@ class AudioPlayer: ObservableObject {
     
     var player = AVAudioPlayer()
     
-    static let shared = AVAudioSession.sharedInstance()
-    
     init(name: String, type: String, volume: Float = 0, fadeDuration: Double, loops: Int) {
         if let url = Bundle.main.url(forResource: name, withExtension: type) {
             print("success audio file: \(name)")
@@ -59,6 +57,7 @@ class AudioPlayer: ObservableObject {
                 self.player.stop()
             }
         }
+        player.currentTime = 0
     }
     
     func fadeInAccomplished() -> Bool {
@@ -87,6 +86,7 @@ class AudioPlayer: ObservableObject {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     func stopAudio() {
         player.stop()
+        player.currentTime = 0
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
     func nextTrack() {

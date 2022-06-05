@@ -3,14 +3,17 @@
 //  RelaxMax
 //
 //  Created by Naji Achkar on 21/05/2022.
+////
 //
-
 //import Foundation
 //
 //class BreathViewModel: ObservableObject {
 //
+//    var quoteService = QuoteService()
+//    
 //    @Published var selection: UUID?
-//    @Published var breathTime: Int = 10
+//    @Published var breathDuration: Int = 10
+//    @Published var quote: String = ""
 //
 //    @Published var breathDurationOptions = [OptionItem(minutes: 1),
 //                                            OptionItem(minutes: 2),
@@ -19,16 +22,18 @@
 //                                            OptionItem(minutes: 5),
 //                                            OptionItem(minutes: 0)]
 //
-////    func setBreathDuration(index: Int) {
-////        switch index {
-////        case 0: self.breathTime = 10
-////        default: self.breathTime = index * 60
-////        }
-////    }
+//    @Published var welcomeText = """
+//Help your body and mind
+//with regular breathing sessions
+//"""
+//    
+//    
+//    
+//
 //}
 ////////////////////////////////////////////////////////////////////////////////////////////////
-
-
+//
+//
 
 
 //class BreathViewModel: ObservableObject {

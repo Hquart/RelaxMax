@@ -73,14 +73,14 @@ struct FlowerFrameView: View {
     var body: some View {
         ZStack {
             Image("flower")
-            Petal(animate: $animFlower,
-                  rotationIn: -25, rotationOut: -15)
-            Petal(animate: $animFlower,
-                  rotationIn: 25, rotationOut: 5)
-            Petal(animate: $animFlower,
-                  rotationIn:  -50, rotationOut: -10)
-            Petal(animate: $animFlower,
-                  rotationIn: 50, rotationOut: 10)
+//            Petal(animate: $animFlower,
+//                  rotationIn: -25, rotationOut: -15)
+//            Petal(animate: $animFlower,
+//                  rotationIn: 25, rotationOut: 5)
+//            Petal(animate: $animFlower,
+//                  rotationIn:  -50, rotationOut: -10)
+//            Petal(animate: $animFlower,
+//                  rotationIn: 50, rotationOut: 10)
         }
 //        .scaleEffect(2.1)
         .shadow(color: .blue, radius: animFlower ? 100 : 0)

@@ -10,31 +10,29 @@ import SwiftUI
 struct FlowerView: View {
     
     @Binding var animFlower: Bool
+    @Binding var openFlower: Bool
     
     var body: some View {
         ZStack {
             Image("flower")
-            Petal(animate: $animFlower,
-                  rotationIn: -25, rotationOut: -5)
-            Petal(animate: $animFlower,
-                  rotationIn: 25, rotationOut: 5)
-            Petal(animate: $animFlower,
-                  rotationIn:  -50, rotationOut: -10)
-            Petal(animate: $animFlower,
-                  rotationIn: 50, rotationOut: 10)
+            Petal(animate: $animFlower, openFlower: $openFlower, rotationIn: -25, rotationOut: -5).opacity(0.9)
+            Petal(animate: $animFlower, openFlower: $openFlower, rotationIn: 25, rotationOut: 5).opacity(0.9)
+            Petal(animate: $animFlower, openFlower: $openFlower, rotationIn:  -50, rotationOut: -10).opacity(0.7)
+            Petal(animate: $animFlower, openFlower: $openFlower, rotationIn: 50, rotationOut: 10).opacity(0.7)
         }
         .scaleEffect(1.2)
-        .shadow(color: .blue, radius: animFlower ? 100 : 0)
-//        .hueRotation(Angle(degrees: animFlower ? 0 : 90))
-        .animation(Animation.easeInOut(duration: 5.0)
+        .shadow(color: .white, radius: animFlower ? 20 : 0)
+        .shadow(color: .purple, radius: openFlower ? 0 : 100)
+        .animation(Animation.easeInOut(duration: 5.0).repeat(while: animFlower, autoreverses: true), value: animFlower)
                    
-            .repeat(while: animFlower, autoreverses: true), value: animFlower)
+          
     }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
 struct Petal: View {
     
     @Binding var animate: Bool
+    @Binding var openFlower: Bool
     
     var rotationIn: Double
     var rotationOut: Double
@@ -42,8 +40,10 @@ struct Petal: View {
     var body: some View {
         Image("flower")
             .rotationEffect(.degrees(animate ? rotationIn : rotationOut), anchor: .bottom)
+            .rotationEffect(.degrees(openFlower ? rotationIn : rotationOut), anchor: .bottom)
             .animation(Animation.easeInOut(duration: 5.0)
                 .repeat(while: animate, autoreverses: true), value: animate)
+            .animation(.linear(duration: 3).repeatCount(1), value: openFlower)
     }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -51,12 +51,15 @@ struct Petal: View {
 ////////////////////////////////////////////////////////////////////////////////////////////////
 struct FlowerView_Previews: PreviewProvider {
     static var previews: some View {
+        ZStack {
+            Color.breathGreen1.ignoresSafeArea()
         VStack {
-            FlowerView(animFlower: .constant(false))
+            FlowerView(animFlower: .constant(false), openFlower: .constant(false))
                 .padding(.bottom, 200)
-            FlowerView(animFlower: .constant(true))
+            FlowerView(animFlower: .constant(true), openFlower: .constant(true))
                 .padding()
         }
         .previewDevice("iPhone 13")
     }
+}
 }

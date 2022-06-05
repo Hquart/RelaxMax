@@ -51,6 +51,9 @@
 		9A8FA308283F7F9800F6DBB8 /* spaceVideo.mov in Resources */ = {isa = PBXBuildFile; fileRef = 9A8FA307283F7F9800F6DBB8 /* spaceVideo.mov */; };
 		9A9ED4F6284768ED00D2486E /* CollectionViewPagingLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9A9ED4F5284768ED00D2486E /* CollectionViewPagingLayout */; };
 		9A9ED4FA28476CFD00D2486E /* TimeOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9ED4F928476CFD00D2486E /* TimeOptionsView.swift */; };
+		9AAF66C72848E5B6005C52B4 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF66C62848E5B6005C52B4 /* CircularProgressView.swift */; };
+		9AF92C63284A19BD0073FDDE /* BreathGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF92C62284A19BD0073FDDE /* BreathGradientView.swift */; };
+		9AF92C65284BA0C50073FDDE /* FocusGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF92C64284BA0C50073FDDE /* FocusGradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +101,9 @@
 		9A8FA305283F772900F6DBB8 /* FocusFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusFrameView.swift; sourceTree = "<group>"; };
 		9A8FA307283F7F9800F6DBB8 /* spaceVideo.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = spaceVideo.mov; sourceTree = "<group>"; };
 		9A9ED4F928476CFD00D2486E /* TimeOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOptionsView.swift; sourceTree = "<group>"; };
+		9AAF66C62848E5B6005C52B4 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		9AF92C62284A19BD0073FDDE /* BreathGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathGradientView.swift; sourceTree = SOURCE_ROOT; };
+		9AF92C64284BA0C50073FDDE /* FocusGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusGradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +201,7 @@
 				9A6FFF3628378C3B002B0844 /* CircleModel.swift */,
 				9A9ED4F928476CFD00D2486E /* TimeOptionsView.swift */,
 				9A6FFF3028378B82002B0844 /* CirclesAnimationView.swift */,
+				9AAF66C62848E5B6005C52B4 /* CircularProgressView.swift */,
 				9A8FA2F0283A6CE300F6DBB8 /* TestView.swift */,
 			);
 			name = SubViews;
@@ -223,6 +230,7 @@
 		9A6FFF4728379EDA002B0844 /* Focus Mode */ = {
 			isa = PBXGroup;
 			children = (
+				9AF92C64284BA0C50073FDDE /* FocusGradientView.swift */,
 				9A6FFF2228378915002B0844 /* FocusView.swift */,
 				9A8FA2F6283CC46900F6DBB8 /* FocusInfoView.swift */,
 				9A6FFF2A28378A76002B0844 /* FocusViewModel.swift */,
@@ -240,6 +248,7 @@
 		9A6FFF542838EE0C002B0844 /* Breath */ = {
 			isa = PBXGroup;
 			children = (
+				9AF92C62284A19BD0073FDDE /* BreathGradientView.swift */,
 				9A8FA2F8283CCB4200F6DBB8 /* BreathInfoView.swift */,
 				9A6FFF522838D1DB002B0844 /* BreathView.swift */,
 				9A6FFF582838FE91002B0844 /* BreathViewModel.swift */,
@@ -369,8 +378,10 @@
 				9A6FFF2F28378B45002B0844 /* ClockView.swift in Sources */,
 				9A6FFF1F2837888D002B0844 /* HomeView.swift in Sources */,
 				9A6FFF4328379DF0002B0844 /* Extensions.swift in Sources */,
+				9AAF66C72848E5B6005C52B4 /* CircularProgressView.swift in Sources */,
 				9A6FFF3328378BBB002B0844 /* PlayerAudioView.swift in Sources */,
 				9A9ED4FA28476CFD00D2486E /* TimeOptionsView.swift in Sources */,
+				9AF92C63284A19BD0073FDDE /* BreathGradientView.swift in Sources */,
 				9A8FA306283F772900F6DBB8 /* FocusFrameView.swift in Sources */,
 				9A8FA304283F6D3B00F6DBB8 /* BreathFrameView.swift in Sources */,
 				9A6FFF592838FE91002B0844 /* BreathViewModel.swift in Sources */,
@@ -381,6 +392,7 @@
 				9A8FA302283F6C3F00F6DBB8 /* SmartFrameView.swift in Sources */,
 				9A6FFF2328378915002B0844 /* FocusView.swift in Sources */,
 				9A6FFF3528378C10002B0844 /* TimerService.swift in Sources */,
+				9AF92C65284BA0C50073FDDE /* FocusGradientView.swift in Sources */,
 				9A02F972283F80DC00C1737D /* VideoPlayer.swift in Sources */,
 				9A6FFF562838F1D6002B0844 /* FlowerView.swift in Sources */,
 				9A6FFF2B28378A76002B0844 /* FocusViewModel.swift in Sources */,

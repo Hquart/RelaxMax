@@ -80,7 +80,7 @@ struct ClockView: View {
     func tick(at tick: Int) -> some View {
                VStack {
                    Rectangle()
-                       .fill(Color.black)
+                       .fill(Color.white)
                        .opacity(tick % 5 == 0 ? 1 : 0.1)
                        .frame(width: 3, height: tick % 5 == 0 ? 20 : 10)
                    Spacer()

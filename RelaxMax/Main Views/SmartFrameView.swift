@@ -68,7 +68,7 @@ struct SmartFrameView: View {
                                         .frame(width: 50, height: 50)
                                         .foregroundColor(Color.black)
                                         .aspectRatio(contentMode: .fit)
-                                        .shadow(color: .appBlue, radius: 3)
+                                        .shadow(color: .blue, radius: 3)
                                         .scaleEffect(1.2)
                 Spacer()
                 

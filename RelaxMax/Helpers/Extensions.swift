@@ -59,7 +59,7 @@ extension Binding {
 
 
 extension Color {
-    static let appBlue = Color("appBlue")
+    
     static let appWhite = Color("appWhite")
     static let appGray = Color("appGray")
     static let appDarkGray = Color("appDarkGray")
@@ -69,6 +69,9 @@ extension Color {
     static let appRed = Color("appRed")
     static let appOrange = Color("appOrange")
     static let flowerColor = Color("flowerColor")
+    
+    static let focusBlue1 = Color("focusBlue1")
+    static let focusBlue2 = Color("focusBlue2")
     
     
     static let breathGreen1 = Color("breathGreen1")

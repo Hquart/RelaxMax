@@ -4,41 +4,45 @@
 //
 //  Created by Naji Achkar on 12/05/2022.
 //
-
+//
 import SwiftUI
-
-struct GradientAnim: View {
-    
-    @State private var progress: CGFloat = 0
-    
-    let color1: Color
-    let color2: Color
-    let color3: Color
-    let color4: Color
-    
-    var animDuration: Double
-    
-    init(color1: Color, color2: Color, color3: Color, color4: Color, animDuration: Double) {
-        self.color1 = color1
-        self.color2 = color2
-        self.color3 = color3
-        self.color4 = color4
-        self.animDuration = animDuration
-    }
-        var body: some View {
-            Rectangle()
-                .animatableGradient(fromGradient: Gradient(colors: [color1, color2]),
-                                    toGradient: Gradient(colors: [color3, color4]),
-                                         progress: progress)
-                .ignoresSafeArea()
-                .onAppear {
-                    withAnimation(.linear(duration: animDuration)
-                        .repeatForever(autoreverses: true)) {
-                        self.progress = 1.0
-                    }
-                }
-        }
-}
+//
+//struct GradientAnim: View {
+//    
+//    @State private var progress: CGFloat = 0
+//    
+//    let color1: Color
+//    let color2: Color
+//    let color3: Color
+//    let color4: Color
+//    
+//    var animDuration: Double
+//    @Binding var animate
+//    
+//    init(color1: Color, color2: Color, color3: Color, color4: Color, animDuration: Double) {
+//        self.color1 = color1
+//        self.color2 = color2
+//        self.color3 = color3
+//        self.color4 = color4
+//        self.animDuration = animDuration
+//    }
+//        var body: some View {
+//            Rectangle()
+//                .animatableGradient(fromGradient: Gradient(colors: [color1, color2]),
+//                                    toGradient: Gradient(colors: [color3, color4]),
+//                                         progress: progress)
+//                .ignoresSafeArea()
+//                .onChange(animate, perform: <#T##(Equatable) -> Void##(Equatable) -> Void##(_ newValue: Equatable) -> Void#>)
+//            
+//            
+//                .onAppear {
+//                    withAnimation(.linear(duration: animDuration)
+//                        .repeatForever(autoreverses: true)) {
+//                        self.progress = 1.0
+//                    }
+//                }
+//        }
+//}
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //struct GradientAnim_Previews: PreviewProvider {
 //    static var previews: some View {

@@ -10,14 +10,10 @@ import Foundation
 class QuoteService: ObservableObject {
     
     @Published var current: String = ""
- 
-    init() {
-        getNewQuote()
-    }
     
-    func getNewQuote() {
+    func getNewQuote(from: String) {
         
-         let quotes: [Quote] = Bundle.main.decode("quotes.json")
+         let quotes: [Quote] = Bundle.main.decode(from)
 
         if let random = quotes.randomElement() {
             self.current = random.quoteText
