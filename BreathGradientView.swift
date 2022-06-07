@@ -21,21 +21,16 @@ struct BreathGradientView: View {
                                          progress: progress)
                 .ignoresSafeArea()
                 .animation(.linear(duration: 5.0).repeat(while: animate), value: animate)
-                
-//                Button("Button") {
-//                    withAnimation(.linear(duration: 5.0).repeatForever(autoreverses: true)) {
-//                    progress = 1.0
-//                }
-//                }
-                
+
         }
         }
 }
 
-//struct BreathGradientView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ZStack {
-//            BreathGradientView(progress: .constant(<#T##value: CGFloat##CGFloat#>), animate: .constant(true)).ignoresSafeArea()
-//        }
-//    }
-//}
+struct BreathGradientView_Previews: PreviewProvider {
+    static var previews: some View {
+        ZStack {
+            BreathGradientView(progress: .constant(0.0), animate: .constant(true)).ignoresSafeArea()
+        }
+        .previewDevice("iPhone 13")
+    }
+}

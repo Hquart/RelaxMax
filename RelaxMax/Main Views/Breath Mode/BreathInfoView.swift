@@ -1,5 +1,5 @@
 //
-//  FocusInfoView.swift
+//  BreathInfoView.swift
 //  RelaxMax
 //
 //  Created by Naji Achkar on 24/05/2022.
@@ -7,30 +7,32 @@
 
 import SwiftUI
 
-struct FocusInfoView: View {
+struct BreathInfoView: View {
     
-@State private var infoText = """
+    @State private var infoText = """
+Cardiac coherence method:
 
-Select work session duration
+Inhale for 5 seconds,
 
-Deep focus with white noise
+Exhale for 5 seconds,
 
-Music will notify you at break time
 
+Lowers your blood pressure
+
+Helps you relax or sleep
 """
+    @State private var anim: Bool = false
     
     var body: some View {
         GeometryReader { geo in
         ZStack {
-            LinearGradient(colors: [.blue, .gray], startPoint: .center, endPoint: .bottom)
+            LinearGradient(colors: [.white, .gray], startPoint: .center, endPoint: .bottom)
                 .ignoresSafeArea()
             
         VStack {
-            ZStack {
-                ClockView(showTicks: false).scaleEffect(0.8).zIndex(1)
-                Image("clock3")
-            }
-
+            FlowerInfoView(animFlower: $anim, openFlower: $anim)
+                .padding(.bottom, 100)
+                .shadow(color: .blue, radius: 3)
         Text(infoText)
                 .foregroundColor(Color.black)
                 .font(.headline)
@@ -43,10 +45,9 @@ Music will notify you at break time
     }
 }
 }
-
-struct FocusInfoView_Previews: PreviewProvider {
+struct BreathInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        FocusInfoView()
+        BreathInfoView()
             .previewDevice("iPhone 13")
     }
 }

@@ -15,9 +15,10 @@ struct FocusView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var welcomeMessage: String = """
-Focus mode helps you concentrate on your work
-for better productivity
-"""
+    Focus mode
+    helps you concentrate on your work
+    for better productivity
+    """
     var breakMessageText: String = """
                         Time to take a break
                         Walk a little,
@@ -32,65 +33,77 @@ for better productivity
                                  OptionItem(minutes: 90),
                                  OptionItem(minutes: 120)]
     
-    @ObservedObject var whiteNoisePlayer = AudioPlayer(name: "sound2", type: "mp3", volume: 0, fadeDuration: 10.0, loops: -1)
+    @ObservedObject var whiteNoisePlayer = AudioPlayer(name: "whiteNoise", type: "mp3", volume: 0, fadeDuration: 10.0, loops: -1)
     @ObservedObject var breakMusicPlayer = AudioPlayer(name: "marconi", type: "mp3", volume: 1, fadeDuration: 5.0, loops: -1)
     
     @State private var showHello: Bool = false
     @State private var showQuote: Bool = false
     
-    @State var breakLenght: Double = 30 // in seconds
-    @State var breakGap: Double = 20
+    @State var breakGap: Double = 0.2 // == 12 seconds for demo purpose
     
     @State private var isWorking: Bool = false
     @State private var isInBreak: Bool = false
     @State private var showInfo: Bool = false
     @State private var userHasQuit: Bool = false
     
+    @State private var showBackToWorkButton: Bool = false
+    @State private var showClock: Bool = false
+    @State private var showBubbles: Bool = false
+    
+    @State private var playButtonDisabled = false
     @State private var isPlaying: Bool = false
+    @State private var showPlayerButton: Bool = false
     
     @State private var selection: UUID?
     
     @State private var showStartMode: Bool = false
-    @State private var progress: CGFloat = 0
+    @State private var gradientProgress: CGFloat = 0
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ///------------ BODY ------------------
     ////////////////////////////////////////////////////////////////////////////////////////////////
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                FocusGradientView(progress: $progress, animate: $isWorking)
+                    FocusGradientView(progress: $gradientProgress, animate: $isWorking, duration: $breakGap)
                     .ignoresSafeArea()
                 ////////////////////////////////////////////////////////////////////////////////////////////////
                 VStack {
                     Spacer(minLength: geo.size.height * 0.25)
-                    ClockView()
-                        .opacity(isWorking ? 0.3 : 0.8)
-                        .scaleEffect(0.8)
+                    ZStack {
+                        BubblesView(animate: $showBubbles).opacity(showBubbles ? 0.2 : 0.0).zIndex(1)
+                        helloMessage
+                        ClockView(showTicks: true)
+                            .scaleEffect(0.9)
                         .padding(.bottom, 50)
                         .position(x: geo.size.width / 2, y: geo.size.height / 7)
-                       
-                    ////////////////////////////////////////////////////////////////////////////////////////////////
-                    ZStack {
-                        helloMessage
-                        quote
+                        .opacity(showClock ? 1.0 : 0.0)
+                      
                         breakMessage.opacity(isInBreak ? 0.8 : 0.0)
                     }
-                    .frame(width: geo.size.width * 0.8 , height: geo.size.height * 0.2, alignment: .center)
-                    .padding(.bottom, 30)
-                 
+                    quoteMessage
                     ////////////////////////////////////////////////////////////////////////////////////////////////
-                        if showStartMode {
-                                //////////////////////////////////////////  BREAK PICKERS   ///////////////////////////////////////
-                                TimeOptionsView(selectionText: "Break After:", color: .appDarkBlue, items: focusDurationOptions, selection: $selection)
-                                    .frame(width: geo.size.width , height: geo.size.height * 0.1, alignment: .center)
-                        } else {
-                            Rectangle().opacity(0)
-                        }
-                                //////////////////////////////////////////  START BUTTON   ///////////////////////////////////////
-                    if !showHello {
-                                Button(action: { startFocusMode(breakGap: breakGap, breakDuration: breakLenght) }) {
+                 
+                        BubblesView(animate: $showStartMode).opacity(showBubbles ? 0.2 : 0.0).zIndex(1)
+                       
+                    
+                    .frame(width: geo.size.width * 0.9 , height: geo.size.height * 0.3, alignment: .center)
+                    ////////////////////////////////////////////////////////////////////////////////////////////////
+                    ZStack {
+                        TimeOptionsView(selectionText: "Have a break After:", color: .darkblue, items: focusDurationOptions, selection: $selection)
+                            .opacity(showStartMode ? 0.8 : 0.0)
+//                        Rectangle().opacity(0.0)
+                        backToWorkButton.opacity(showBackToWorkButton ? 0.8 : 0.0)
+                    }
+                    .frame(width: geo.size.width , height: geo.size.height * 0.1, alignment: .center)
+                    //////////////////////////////////////////  START BUTTON   ///////////////////////////////////////
+                    if showPlayerButton {
+                        VStack {
+                                Button(action: { startFocusMode(breakGap: breakGap) }) {
                                     playButton
+                                        .disabled(showPlayerButton)
+                                        .opacity(showPlayerButton ? 1.0 : 0.0)
                                 }
+                        }
                     }
                     ////////////////////////////////////////////////////////////////////////////////////////////////
                 }
@@ -101,22 +114,22 @@ for better productivity
                     FocusInfoView()
                 }
                 .onAppear {
-                    quoteService.getNewQuote(from: "quotes.json")
+                    quoteService.getNewQuote(from: "focusQuotes.json")
                     showHello = true
+                    showClock = false
+                    showBubbles = true
+                    self.selection = focusDurationOptions[0].id
                     resetView()
                     userHasQuit = false
                     welcome()
+                    gradientProgress = 0.0
                 }
                 .onChange(of: self.selection) { newValue in
                     if let index = focusDurationOptions.firstIndex(where: { $0.id == newValue  }) {
                         if index == 0 {
                             self.breakGap = 0.2
-                            self.breakLenght = 0.1
-                            
                         } else {
                             self.breakGap = Double(self.focusDurationOptions[index].minutes)
-                            self.breakLenght = 15
-                          
                         }
                     }
                 }
@@ -124,7 +137,9 @@ for better productivity
         }
     }
     func resetView() {
-        userHasQuit = true
+        showBubbles = true
+        showClock = false
+        gradientProgress = 0.0
         isWorking = false
         whiteNoisePlayer.stopAudio()
         breakMusicPlayer.stopAudio()
@@ -133,56 +148,62 @@ for better productivity
     ///------------FUNCTIONS------------------
     ////////////////////////////////////////////////////////////////////////////////////////////////
     func welcome() {
-       
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             withAnimation(Animation.easeOut(duration: 2)) {
+                showClock = false
                 showHello = false
                 showQuote = true
+                showBubbles = true
             }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
             withAnimation(Animation.easeOut(duration: 2)) {
                 showStartMode = true
+                showPlayerButton = true
             }
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    func startFocusMode(breakGap: Double, breakDuration: Double) {
-        print(self.breakGap)
-        let focusStartTime: DispatchTime = .now()
-        isWorking = true
-        if isWorking {
-            DispatchQueue.main.asyncAfter(deadline: focusStartTime + 0.5) {
-                withAnimation(Animation.easeOut(duration: 3)) {
-                    isInBreak = false
-                    breakMusicPlayer.fadeOut()
-                    whiteNoisePlayer.fadeIn()
-                    isPlaying = true
-                    showStartMode = false
-                    showQuote = false
-                }
-            }
-            DispatchQueue.main.asyncAfter(deadline: focusStartTime + breakGap) {
-                withAnimation(Animation.easeOut(duration: 3)) {
-                    startBreakTime()
-                }
-            }
+    func startFocusMode(breakGap: Double) {
+        withAnimation(.linear(duration: 3.0)) {
+            isWorking = true
+            showPlayerButton = false
+            showClock = true
+            showBubbles = false
+        }
+        whiteNoisePlayer.playAudio(duration: 5.0)
+        withAnimation(.linear(duration: 3.0)) {
+            showStartMode = false
+            showQuote = false
+        }
+        withAnimation(.linear(duration: self.breakGap * 60)) {
+            gradientProgress = 1.0
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + breakGap * 60) {
+            startBreakTime()
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
     func startBreakTime() {
-        isWorking = false
-        isInBreak = true
-        whiteNoisePlayer.fadeOut()
-        breakMusicPlayer.fadeIn()
-        
-        if isInBreak && userHasQuit == false {
-        DispatchQueue.main.asyncAfter(deadline: .now() + breakLenght) {
+        quoteService.getNewQuote(from: "focusQuotes.json")
+        withAnimation(.linear(duration: 5.0)) {
+            isInBreak = true
+            isWorking = false
+            showBubbles = true
+            showClock = false
+        }
+      
+        whiteNoisePlayer.player.setVolume(0.0, fadeDuration: 10.0)
+        breakMusicPlayer.playAudio(duration: 10.0)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             withAnimation(Animation.easeOut(duration: 3)) {
-                startFocusMode(breakGap: breakGap, breakDuration: breakLenght)
+                showBackToWorkButton = true
+                gradientProgress = 0
+                isInBreak = false
+                showQuote = true
             }
         }
-    }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
 }
@@ -192,34 +213,41 @@ for better productivity
 extension FocusView {
     private var helloMessage: some View {
         Text(welcomeMessage)
-            .font(.headline).scaleEffect(1.1)
+            .italic().bold()
             .multilineTextAlignment(.center)
-            .foregroundColor(Color.appDarkBlue)
-            .transition(.asymmetric(insertion: .opacity, removal: .opacity))
+            .font(.title).scaleEffect(0.8)
+            .foregroundColor(Color.darkblue)
+            .padding()
             .opacity(showHello ? 0.8 : 0.0)
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    private var quote: some View {
-        Text(quoteService.current)
-            .multilineTextAlignment(.center)
-            .font(.headline).scaleEffect(1.1)
-            .foregroundColor(Color.appDarkBlue)
-            .padding()
-            .opacity(showQuote ? 1 : 0.0)
+    private var quoteMessage: some View {
+        VStack {
+            Text(quoteService.currentQuote.quoteText)
+                .italic().bold()
+                .multilineTextAlignment(.center)
+                .font(.title).scaleEffect(0.8)
+                .foregroundColor(Color.darkblue)
+                .padding()
+              
+            Text(quoteService.currentQuote.quoteAuthor)
+                .italic().bold()
+                .font(.headline)
+                .foregroundColor(Color.white)
+        }  .opacity(showQuote ? 1 : 0.0)
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
     private var backButton: some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
             resetView()
+            userHasQuit = true
         }) {
             Image(systemName: "chevron.backward")
-                .foregroundColor(Color.white).shadow(radius: 5)
                 .opacity(isWorking ? 0.1 : 0.8)
                 .animation(.linear(duration: 1.5), value: isWorking)
-                .foregroundColor(Color.white)
+                .foregroundColor(Color.darkblue)
                 .scaleEffect(1.2)
-            
                 .padding()
         }
     }
@@ -229,47 +257,67 @@ extension FocusView {
             showInfo.toggle()
         }) {
             Image(systemName: "info.circle")
-                .opacity(isWorking ? 0.2 : 0.8)
-                .foregroundColor(Color.white)
-                .scaleEffect(1.4)
+                .opacity(isWorking ? 0.1 : 0.8)
+                .animation(.linear(duration: 1.5), value: isWorking)
+                .foregroundColor(Color.darkblue)
+                .scaleEffect(1.2)
                 .padding()
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
     private var playButton: some View {
-        Button(action: { whiteNoisePlayer.isPlayingAudio() ? whiteNoisePlayer.muteAudio() : startFocusMode(breakGap: breakGap, breakDuration: 15) }) {
-            ZStack {
+        Button(action: {
+            if isWorking == false {
+                startFocusMode(breakGap: breakGap)
+            } else if isPlaying && isWorking {
+                whiteNoisePlayer.pauseAudio()
+            } else {
+                whiteNoisePlayer.playAudio(duration: 5.0)
+            }
+            }) {
+                ZStack {
                 Circle().foregroundColor(.black)
-                Image(systemName: isWorking ? "pause.circle.fill" : "play.circle.fill")
-                    .resizable()
-                    .foregroundColor(Color.white)
-                    .aspectRatio(contentMode: .fit)
-                    .shadow(radius: 3)
-            }   .scaleEffect(0.4)
-           
+                    Image(systemName: "play.circle.fill")
+                        .resizable()
+                        .foregroundColor(Color.white)
+                        .aspectRatio(contentMode: .fit)
+                        .shadow(radius: 3)
+                }
+            }
+            .scaleEffect(0.5)
         }
-    }
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    private var startButton: some View {
-        Text("Start")
+    private var backToWorkButton: some View {
+        Button(action: {
+            showStartMode = true
+            withAnimation(.linear(duration: 3)) {
+                showPlayerButton = true
+                showBackToWorkButton = false
+                showQuote = true
+                isInBreak = false
+                breakMusicPlayer.player.setVolume(0.0, fadeDuration: 10.0)
+            }
+        }) {
+        Text("Back to work")
             .font(.headline)
-        
             .foregroundColor(.white).scaleEffect(1.2)
             .padding(.vertical, 15)
             .padding(.horizontal, 75)
-            .background(.green)
+            .background(.blue)
             .cornerRadius(30)
             .shadow(color: .black, radius: 5)
+    }
+        .disabled(!showBackToWorkButton)
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
     private var breakMessage: some View {
         Text(breakMessageText)
-            .font(.headline).scaleEffect(1.1)
+            .italic().bold()
             .multilineTextAlignment(.center)
-            .foregroundColor(Color.appDarkBlue)
+            .font(.title).scaleEffect(0.8)
+            .foregroundColor(Color.white)
             .padding()
     }
-
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // ---------- PREVIEW ----------------

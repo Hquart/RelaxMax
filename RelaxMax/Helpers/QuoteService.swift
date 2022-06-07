@@ -9,14 +9,14 @@ import Foundation
 ////////////////////////////////////////////////////////////////////////////////////////////////
 class QuoteService: ObservableObject {
     
-    @Published var current: String = ""
+    @Published var currentQuote: Quote = Quote(quoteText: "", quoteAuthor: "")
     
     func getNewQuote(from: String) {
         
          let quotes: [Quote] = Bundle.main.decode(from)
 
         if let random = quotes.randomElement() {
-            self.current = random.quoteText
+            self.currentQuote = random
         }
     }
     }

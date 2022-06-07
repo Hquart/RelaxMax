@@ -12,14 +12,16 @@ struct FocusGradientView: View {
     @Binding var progress: CGFloat
     @Binding var animate: Bool
     
+    @Binding var duration: Double
+    
     var body: some View {
         ZStack {
             Rectangle()
                 .animatableGradient(fromGradient: Gradient(colors: [Color.focusBlue1, Color.focusBlue2]),
-                                    toGradient: Gradient(colors: [Color.green, Color.orange]),
+                                    toGradient: Gradient(colors: [Color.blue, Color.darkblue]),
                                     progress: progress)
                 .ignoresSafeArea()
-                .animation(.linear(duration: 5.0).repeat(while: animate), value: animate)
+                .animation(.linear(duration: duration), value: animate)
         }
     }
 }

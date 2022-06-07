@@ -56,8 +56,7 @@ extension Binding {
         )
     }
 }
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////
 extension Color {
     
     static let appWhite = Color("appWhite")
@@ -73,7 +72,7 @@ extension Color {
     static let focusBlue1 = Color("focusBlue1")
     static let focusBlue2 = Color("focusBlue2")
     
-    
+    static let darkblue = Color("darkblue")
     static let breathGreen1 = Color("breathGreen1")
     static let breathGreen2 = Color("breathGreen2")
     
