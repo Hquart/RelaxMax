@@ -6,7 +6,7 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct HomeView2: View {
     
     @State private var animate = false
     @State private var agreedToTerms = true
@@ -82,7 +82,7 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView2()
             .previewInterfaceOrientation(.portrait)
     }
 }

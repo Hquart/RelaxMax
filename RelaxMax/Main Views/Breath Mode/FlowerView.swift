@@ -14,11 +14,11 @@ struct FlowerView: View {
     
     var body: some View {
         ZStack {
-            Image("flower")
-            Petal(animate: $animFlower, openFlower: $openFlower, flowerImageString: "flower", rotationIn: -25, rotationOut: -5).opacity(0.9)
-            Petal(animate: $animFlower, openFlower: $openFlower, flowerImageString: "flower", rotationIn: 25, rotationOut: 5).opacity(0.9)
-            Petal(animate: $animFlower, openFlower: $openFlower, flowerImageString: "flower", rotationIn:  -50, rotationOut: -10).opacity(0.7)
-            Petal(animate: $animFlower, openFlower: $openFlower, flowerImageString: "flower", rotationIn: 50, rotationOut: 10).opacity(0.7)
+            Image("flower3")
+            Petal(animate: $animFlower, openFlower: $openFlower, flowerImageString: "flower3", rotationIn: -25, rotationOut: -5).opacity(0.9)
+            Petal(animate: $animFlower, openFlower: $openFlower, flowerImageString: "flower3", rotationIn: 25, rotationOut: 5).opacity(0.9)
+            Petal(animate: $animFlower, openFlower: $openFlower, flowerImageString: "flower3", rotationIn:  -50, rotationOut: -10).opacity(0.7)
+            Petal(animate: $animFlower, openFlower: $openFlower, flowerImageString: "flower3", rotationIn: 50, rotationOut: 10).opacity(0.7)
         }
 
         .scaleEffect(1.2)

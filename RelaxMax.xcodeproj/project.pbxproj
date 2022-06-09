@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A39AFD5284E04560062A122 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39AFD4284E04560062A122 /* HomeView.swift */; };
+		9A39AFD5284E04560062A122 /* HomeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39AFD4284E04560062A122 /* HomeView2.swift */; };
 		9A39AFD7284F3AFA0062A122 /* BubblesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39AFD6284F3AFA0062A122 /* BubblesView.swift */; };
 		9A39AFD9284F93040062A122 /* SmartModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39AFD8284F93040062A122 /* SmartModeView.swift */; };
 		9A39AFDB284FB1860062A122 /* focusQuotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A39AFDA284FB1860062A122 /* focusQuotes.json */; };
@@ -38,12 +38,11 @@
 		9AAF66C72848E5B6005C52B4 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF66C62848E5B6005C52B4 /* CircularProgressView.swift */; };
 		9AF92C63284A19BD0073FDDE /* BreathGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF92C62284A19BD0073FDDE /* BreathGradientView.swift */; };
 		9AF92C65284BA0C50073FDDE /* FocusGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF92C64284BA0C50073FDDE /* FocusGradientView.swift */; };
-		9AF92C67284CBACD0073FDDE /* windNoise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9AF92C66284CBACD0073FDDE /* windNoise.mp3 */; };
 		9AF92C69284CBFD40073FDDE /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF92C68284CBFD40073FDDE /* SoundManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9A39AFD4284E04560062A122 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9A39AFD4284E04560062A122 /* HomeView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView2.swift; sourceTree = "<group>"; };
 		9A39AFD6284F3AFA0062A122 /* BubblesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubblesView.swift; sourceTree = "<group>"; };
 		9A39AFD8284F93040062A122 /* SmartModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartModeView.swift; sourceTree = "<group>"; };
 		9A39AFDA284FB1860062A122 /* focusQuotes.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = focusQuotes.json; sourceTree = "<group>"; };
@@ -75,7 +74,6 @@
 		9AAF66C62848E5B6005C52B4 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		9AF92C62284A19BD0073FDDE /* BreathGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathGradientView.swift; sourceTree = SOURCE_ROOT; };
 		9AF92C64284BA0C50073FDDE /* FocusGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusGradientView.swift; sourceTree = "<group>"; };
-		9AF92C66284CBACD0073FDDE /* windNoise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = windNoise.mp3; path = ../../../../../../Desktop/windNoise.mp3; sourceTree = "<group>"; };
 		9AF92C68284CBFD40073FDDE /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,7 +135,6 @@
 				9A39AFDA284FB1860062A122 /* focusQuotes.json */,
 				9A6FFF3C28378D3E002B0844 /* relax1.mp3 */,
 				9A75F0F82843A5A500A3096B /* breathReward.mp3 */,
-				9AF92C66284CBACD0073FDDE /* windNoise.mp3 */,
 				9A75F0F62843924A00A3096B /* Breath.mp3 */,
 				9A8FA2FA283D4A5400F6DBB8 /* marconi.mp3 */,
 				9A75F0F4284381DB00A3096B /* inhale.mp3 */,
@@ -150,7 +147,7 @@
 		9A6FFF4128378D66002B0844 /* Main Views */ = {
 			isa = PBXGroup;
 			children = (
-				9A39AFD4284E04560062A122 /* HomeView.swift */,
+				9A39AFD4284E04560062A122 /* HomeView2.swift */,
 				9A39AFD8284F93040062A122 /* SmartModeView.swift */,
 				9A6FFF4728379EDA002B0844 /* Focus Mode */,
 				9A6FFF542838EE0C002B0844 /* Breath Mode */,
@@ -277,7 +274,6 @@
 				9A75F0F72843924A00A3096B /* Breath.mp3 in Resources */,
 				9A75F0F5284381DB00A3096B /* inhale.mp3 in Resources */,
 				9A8FA2FB283D4A5400F6DBB8 /* marconi.mp3 in Resources */,
-				9AF92C67284CBACD0073FDDE /* windNoise.mp3 in Resources */,
 				9A75F0F3284381C700A3096B /* exhale.mp3 in Resources */,
 				9A75F0F92843A5A500A3096B /* breathReward.mp3 in Resources */,
 			);
@@ -309,7 +305,7 @@
 				9A39AFD7284F3AFA0062A122 /* BubblesView.swift in Sources */,
 				9A6FFF562838F1D6002B0844 /* FlowerView.swift in Sources */,
 				9AF92C69284CBFD40073FDDE /* SoundManager.swift in Sources */,
-				9A39AFD5284E04560062A122 /* HomeView.swift in Sources */,
+				9A39AFD5284E04560062A122 /* HomeView2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

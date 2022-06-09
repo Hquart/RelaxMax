@@ -75,7 +75,8 @@ with regular breathing sessions
                         .position(x: geo.size.width / 2, y: geo.size.height / 7)
                     ZStack {
                         if isBreathing == false && !showWelcome && !breathingCompleted {
-                            TimeOptionsView(selectionText: "Select Breath Duration:", color: .black, items: breathDurationOptions, selection: self.$selection)
+                            TimeOptionsView(selectionText: "Select Breath Duration:", color: .white, items: breathDurationOptions, selection: self.$selection)
+                                .shadow(color: .black, radius: 25)
                                 .frame(width: geo.size.width , height: geo.size.height * 0.1, alignment: .center)
                         } else if showWelcome {  welcomeMessage .position(x: geo.size.width / 2, y: geo.size.height / 8)
                         } else if showInhale  {  inhaleMessage
@@ -237,12 +238,12 @@ extension BreathView {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     private var inhaleMessage: some View {
         Text("Inhale")
-            .font(.title).foregroundColor(Color.black)
+            .font(.title).foregroundColor(Color.black).bold()
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
     private var exhaleMessage: some View {
         Text("Exhale")
-            .font(.title).foregroundColor(Color.black)
+            .font(.title).foregroundColor(Color.black).bold()
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
     private var breathInfo: some View {

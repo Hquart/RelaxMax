@@ -16,7 +16,7 @@ struct BreathGradientView: View {
         var body: some View {
             ZStack {
             Rectangle()
-                .animatableGradient(fromGradient: Gradient(colors: [Color.breathGreen1, Color.breathGreen2]),
+                .animatableGradient(fromGradient: Gradient(colors: [Color.breathGreen2, Color.breathGreen1]),
                                     toGradient: Gradient(colors: [Color.red, Color.blue]),
                                          progress: progress)
                 .ignoresSafeArea()
