@@ -70,28 +70,31 @@ struct FocusView: View {
                 VStack {
                     Spacer(minLength: geo.size.height * 0.25)
                     ZStack {
-                        BubblesView(animate: $showBubbles).opacity(showBubbles ? 0.2 : 0.0).zIndex(1)
-                        helloMessage
+                    helloMessage
+                    quoteMessage.opacity(showQuote ? 0.8 : 0.0)
                         ClockView(showTicks: true)
                             .scaleEffect(0.9)
                         .padding(.bottom, 50)
                         .position(x: geo.size.width / 2, y: geo.size.height / 7)
                         .opacity(showClock ? 1.0 : 0.0)
-                      
+                   
+                    }
+                    ZStack {
+                        BubblesView(animate: $showBubbles).opacity(showBubbles ? 0.2 : 0.0).zIndex(1)
+                    
+                     
                         breakMessage.opacity(isInBreak ? 0.8 : 0.0)
                     }
-                    quoteMessage
-                    ////////////////////////////////////////////////////////////////////////////////////////////////
-                 
-                        BubblesView(animate: $showStartMode).opacity(showBubbles ? 0.2 : 0.0).zIndex(1)
-                       
                     
-                    .frame(width: geo.size.width * 0.9 , height: geo.size.height * 0.3, alignment: .center)
+                    Spacer()
+                    ////////////////////////////////////////////////////////////////////////////////////////////////
+//                        BubblesView(animate: $showStartMode).opacity(showBubbles ? 0.2 : 0.0).zIndex(1)
+//                    .frame(width: geo.size.width * 0.9 , height: geo.size.height * 0.3, alignment: .center)
                     ////////////////////////////////////////////////////////////////////////////////////////////////
                     ZStack {
                         TimeOptionsView(selectionText: "Have a break After:", color: .darkblue, items: focusDurationOptions, selection: $selection)
                             .opacity(showStartMode ? 0.8 : 0.0)
-//                        Rectangle().opacity(0.0)
+                        Spacer()
                         backToWorkButton.opacity(showBackToWorkButton ? 0.8 : 0.0)
                     }
                     .frame(width: geo.size.width , height: geo.size.height * 0.1, alignment: .center)
@@ -226,9 +229,9 @@ extension FocusView {
             Text(quoteService.currentQuote.quoteText)
                 .italic().bold()
                 .multilineTextAlignment(.center)
-                .font(.title).scaleEffect(0.8)
+                .font(.title).scaleEffect(0.7)
                 .foregroundColor(Color.darkblue)
-                .padding()
+                
               
             Text(quoteService.currentQuote.quoteAuthor)
                 .italic().bold()
@@ -284,7 +287,7 @@ extension FocusView {
                         .shadow(radius: 3)
                 }
             }
-            .scaleEffect(0.5)
+            .scaleEffect(0.4)
         }
     ////////////////////////////////////////////////////////////////////////////////////////////////
     private var backToWorkButton: some View {
